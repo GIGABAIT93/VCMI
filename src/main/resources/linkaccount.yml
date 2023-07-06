@@ -1,0 +1,38 @@
+# The URL of the API to be queried.
+url: "http://example.com/api"
+
+# HTTP request method. Can be "GET" or "POST".
+method: "POST"
+
+# Query parameters. They will be sent to the API with the request. If the parameters are not used, this field can be deleted.
+# You can use placeholders that will be automatically replaced with the appropriate values when the query is executed.
+# Available placeholders: %player_name%, %player_uuid%, %server%, %arg1%, %arg2%, %arg[n]%
+parameters:
+  secret: "lmksfdjlfjsffsdfjkljklgjkljsieiweiefdls"
+  player: "%player_name%"
+  server: "%server%"
+  user_code: "%arg1%"
+
+# Commands that cause the request to be executed. When one of these commands is entered, a request to the API will be executed.
+triggers:
+  - accountlink
+  - linkaccount
+  - sitelink
+
+# Permission required to use the command. If you want to allow all users to use the command, clear this field.
+permission: "account.link"
+
+# Commands to be executed after receiving a response from the API. They are divided into two categories: "success" and "failure".
+# "Success" is used when the HTTP response status is 200, and "failure" when the HTTP response status is not 200.
+# The response from the API must be in JSON format, and you can use JSON-response keys as placeholders in these commands.
+response:
+  # Reply with successful status (200)
+  success:
+    - "alert Player %player_name% has successfully linked his account to the site %json_resp_key_1%"
+    - "msg %player_name% You have successfully linked your account to site. %json_resp_key_2%"
+  # Response in case of failed status (not 200)
+  failure:
+    - "msg %player_name% It was not possible to link the account to the site."
+
+# If this option is enabled, all response options from the api/site will be sent to the sender
+debug: true

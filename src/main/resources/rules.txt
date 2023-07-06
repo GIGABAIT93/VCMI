@@ -1,0 +1,13 @@
+[center]<gray>--------------[<green>Server Rules<gray>]--------------<reset>
+
+[center]<green>This is a test version of text centering</green>
+[center]<yellow>Text centering may not work correctly</yellow>
+
+[center]<gold>We can use as standard formatting</gold>
+[center]<gold>text and MiniMessage</gold>
+
+<gold>To open this file in the chat, just write the name of this file</gold>
+
+<yellow>You can create many such files and their names will be registered as commands to open the file in the chat</yellow>
+
+<gold>To allow players to use the command grant the right: vcmi.text.{filename}</gold>
