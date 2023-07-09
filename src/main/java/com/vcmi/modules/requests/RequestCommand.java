@@ -99,12 +99,14 @@ public class RequestCommand implements SimpleCommand {
 			Player player = (Player) sender;
 			params.put("player_name", player.getUsername());
 			params.put("player_uuid", player.getUniqueId().toString());
+			params.put("player_ip", player.getRemoteAddress().getAddress().toString().replace("/", ""));
 			params.put("server",
 					player.getCurrentServer().isPresent() ? player.getCurrentServer()
 							.get().getServerInfo().getName() : "Not server connected");
 		} else {
 			params.put("player_name", "Console");
 			params.put("player_uuid", "Console");
+			params.put("player_ip", "Proxy");
 			params.put("server", "Proxy");
 		}
 		for (int i = 0; i < args.length; i++) {

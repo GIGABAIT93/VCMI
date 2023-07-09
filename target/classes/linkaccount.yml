@@ -6,7 +6,7 @@ method: "POST"
 
 # Query parameters. They will be sent to the API with the request. If the parameters are not used, this field can be deleted.
 # You can use placeholders that will be automatically replaced with the appropriate values when the query is executed.
-# Available placeholders: %player_name%, %player_uuid%, %server%, %arg1%, %arg2%, %arg[n]%
+# Available placeholders: %player_name%, %player_uuid%, %player_ip%, %server%, %arg1%, %arg2%, %arg[n]%
 parameters:
   secret: "lmksfdjlfjsffsdfjkljklgjkljsieiweiefdls"
   player: "%player_name%"
