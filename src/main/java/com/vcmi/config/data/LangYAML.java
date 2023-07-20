@@ -18,7 +18,7 @@ public class LangYAML {
 
     public static void reload() {
         try {
-            FILE_PATH = VCMI.rootPath + File.separator + "lang" + File.separator + getLangFile() + ".yml";
+            FILE_PATH = VCMI.pluginPath + File.separator + "lang" + File.separator + getLangFile() + ".yml";
             yamlFile = new YamlFile(FILE_PATH);
             if (!yamlFile.exists()) {
                 yamlFile.createNewFile(true);

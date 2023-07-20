@@ -11,7 +11,7 @@ import java.util.Map;
 public class BashModule {
 	public static Map<String, Util.ScriptsData> scriptsData;
 	public static ArrayList<String> scriptsList;
-	public static final Path dir = Path.of(VCMI.rootPath + File.separator + "bash");
+	public static final Path dir = Path.of(VCMI.pluginPath + File.separator + "bash");
 
 	public static void load() {
 		if (System.getProperty("os.name").contains("Windows")) {
@@ -27,7 +27,7 @@ public class BashModule {
 
 	public static void enable() {
 		Util.registerCommand("bash", "vubash", new BASHCommand());
-		Util.createDir(VCMI.rootPath.toString() + File.separator + "bash");
+		Util.createDir(VCMI.pluginPath.toString() + File.separator + "bash");
 		load();
 	}
 

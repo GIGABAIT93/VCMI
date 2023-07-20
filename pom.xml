@@ -150,10 +150,6 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-<!--        <repository>-->
-<!--            <id>exceptionflug</id>-->
-<!--            <url>https://mvn.exceptionflug.de/repository/exceptionflug-public/</url>-->
-<!--        </repository>    -->
     </repositories>
 
     <dependencies>
@@ -191,11 +187,10 @@
             <systemPath>${project.basedir}/libs/Simple-Yaml-1.8.4.jar</systemPath>
             <type>jar</type>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>dev.simplix</groupId>-->
-<!--            <artifactId>protocolize-api</artifactId>-->
-<!--            <version>2.3.0</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.1.4</version>
+        </dependency>
     </dependencies>
 </project>

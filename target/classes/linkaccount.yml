@@ -35,4 +35,4 @@ response:
     - "msg %player_name% It was not possible to link the account to the site."
 
 # If this option is enabled, all response options from the api/site will be sent to the sender
-debug: true
+debug: false

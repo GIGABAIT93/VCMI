@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class EventsYAML {
 
-    private static final String FILE_PATH = VCMI.rootPath + File.separator + "events.yml";
+    private static final String FILE_PATH = VCMI.pluginPath + File.separator + "events.yml";
     private static YamlFile yamlFile;
 
     private EventsYAML() {

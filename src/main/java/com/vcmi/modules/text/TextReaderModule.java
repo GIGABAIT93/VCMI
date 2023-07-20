@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import static com.vcmi.VCMI.rootPath;
+import static com.vcmi.VCMI.pluginPath;
 
 
 public class TextReaderModule {
 
-    private static final Path dir = rootPath.resolve("text");
+    private static final Path dir = pluginPath.resolve("text");
 
     public static void load() {
         if (dir.toFile().mkdirs()){

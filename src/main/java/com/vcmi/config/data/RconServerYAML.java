@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class RconServerYAML {
-    private static final String FILE_PATH = VCMI.rootPath + File.separator + "rcon" + File.separator + "rcon-server.yml";
+    private static final String FILE_PATH = VCMI.pluginPath + File.separator + "rcon" + File.separator + "rcon-server.yml";
     private static YamlFile yamlFile;
 
     private RconServerYAML() {

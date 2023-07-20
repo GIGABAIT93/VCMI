@@ -12,7 +12,7 @@ import java.util.Map;
 public class PhpModule {
 	public static Map<String, Util.ScriptsData> scriptsData;
 	public static ArrayList<String> scriptsList;
-	public static final Path dir = Path.of(VCMI.rootPath + File.separator + "php");
+	public static final Path dir = Path.of(VCMI.pluginPath + File.separator + "php");
 
 	public static void load() {
 		scriptsData = Util.getScriptsData(dir, "index.php");
@@ -23,7 +23,7 @@ public class PhpModule {
 
 	public static void enable() {
 		Util.registerCommand("php", "vuphp", new PHPCommand());
-		Util.createDir(VCMI.rootPath.toString() + File.separator + "php");
+		Util.createDir(VCMI.pluginPath.toString() + File.separator + "php");
 		load();
 	}
 

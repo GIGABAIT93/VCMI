@@ -29,6 +29,7 @@ public class Modules {
         Util.registerCommand("vcmireload", "vcreload", new ReloadCommand());
         Message.info("...");
         Message.info("VCMI loading modules...");
+        Config.databaseInitializer();
         Config.getModules().forEach(this::loadModules);
     }
 

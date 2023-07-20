@@ -15,7 +15,7 @@ public class RequestsModule extends YamlConfiguration {
 
 	private static List<YamlConfiguration> configs;
 
-	private static final String folder = VCMI.rootPath + File.separator + "requests";
+	private static final String folder = VCMI.pluginPath + File.separator + "requests";
 
 	public static void load() {
 		File directory = new File(folder);

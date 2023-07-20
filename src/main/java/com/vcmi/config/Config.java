@@ -6,10 +6,12 @@ import com.vcmi.config.data.ConfigYAML;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import static com.vcmi.VCMI.database;
 
 public class Config extends YamlConfiguration {
 
 	private static YamlConfiguration config;
+	public static DatabaseInitializer databaseInitializer;
 
 	public static void initialise() {
 		config = ConfigYAML.getReloadedFile();
@@ -33,6 +35,9 @@ public class Config extends YamlConfiguration {
 	}
 
 	// Database
+	public static boolean databaseEnable() {
+		return config.getBoolean("database.enable");
+	}
 	public static String getDatabaseType() {
 		return config.getString("database.type");
 	}
@@ -57,6 +62,10 @@ public class Config extends YamlConfiguration {
 		return config.getInt("database.port");
 	}
 
+	public static boolean getSsl() {
+		return config.getBoolean("database.use_ssl");
+	}
+
 	public static String getDatabaseTablePrefix() {
 		return config.getString("database.table_prefix");
 	}
@@ -65,6 +74,15 @@ public class Config extends YamlConfiguration {
 		return config.getBoolean("use_uuid");
 	}
 
+	public static void databaseInitializer(){
+		if (Config.databaseEnable()){
+			database = new Database();
+			if (database.connect()) {
+				databaseInitializer = new DatabaseInitializer(database);
+				databaseInitializer.initializeTables();
+			}
+		}
+	}
 	public static void debugAllMethods() {
 		Message.info("Initialising config:");
 		initialise();

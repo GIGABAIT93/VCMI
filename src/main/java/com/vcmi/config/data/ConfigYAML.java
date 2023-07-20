@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ConfigYAML {
-    private static final String FILE_PATH = VCMI.rootPath + File.separator + "config.yml";
+    private static final String FILE_PATH = VCMI.pluginPath + File.separator + "config.yml";
     private static YamlFile yamlFile;
 
     private ConfigYAML() {
@@ -69,15 +69,15 @@ public class ConfigYAML {
     private static void populateDatabase() {
         yamlFile.setBlankLine("database");
         yamlFile.setComment("database.type", "\"sqlite\" or \"mysql\"");
+        setConfigValue("database.enable", "false");
         setConfigValue("database.type", "sqlite");
         setConfigValue("database.name", "server");
         setConfigValue("database.user", "root");
         setConfigValue("database.password", "password");
         setConfigValue("database.host", "localhost");
         setConfigValue("database.port", "3306");
+        setConfigValue("database.use_ssl", "false");
         setConfigValue("database.table_prefix", "vcmi_");
-
-
     }
 
     private static void setConfigValue(String path, Object defaultValue) {

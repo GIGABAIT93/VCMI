@@ -2,6 +2,7 @@ package com.vcmi;
 
 import com.google.inject.Inject;
 import com.vcmi.config.Config;
+import com.vcmi.config.Database;
 import com.vcmi.config.Lang;
 import com.vcmi.modules.Modules;
 import com.vcmi.modules.event.EventManager;
@@ -16,7 +17,6 @@ import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
-
 import java.nio.file.Path;
 
 @Plugin(
@@ -30,18 +30,27 @@ import java.nio.file.Path;
 public class VCMI {
 
     public static ProxyServer server;
-    public static Path rootPath;
+    public static Path pluginPath;
+    public static Database database;
 
     @Inject
     public VCMI(ProxyServer server, @DataDirectory Path dataDirectory) {
         VCMI.server = server;
-        VCMI.rootPath = dataDirectory;
+        pluginPath = dataDirectory;
     }
 
     public static void loadPlugin() {
         Config.initialise();
         Lang.initialise();
         Modules.load();
+
+//        if (database.exists("player_time", "name = ?", "GIGABAIT")){
+//            database.deleteAsync("player_time", "name = ?", "GIGABAIT");
+//        } else {
+//            database.insertAsync("player_time", "name, uuid, play_time", "GIGABAIT", "SJDJDSAKLSD", "2312311212");
+//        }
+
+
     }
 
 
@@ -72,5 +81,6 @@ public class VCMI {
     @Subscribe
     public void onShutdown(ProxyShutdownEvent event) {
         RconServerModule.disable();
+        database.close();
     }
 }
