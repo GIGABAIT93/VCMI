@@ -132,6 +132,46 @@
                     <releaseProfiles>release</releaseProfiles>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.velocitypowered:velocity-api</include>
+                                    <include>io.netty:netty-buffer</include>
+                                    <include>io.netty:netty-transport</include>
+                                    <include>io.netty:netty-codec</include>
+                                    <include>org.apache.httpcomponents:httpclient</include>
+                                    <include>com.github.Carleslc.Simple-YAML:Simple-Yaml</include>
+                                    <include>org.mariadb.jdbc:mariadb-java-client</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>mariadb.properties</exclude>
+                                        <exclude>deprecated.properties</exclude>
+                                        <exclude>driver.properties</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 
@@ -149,6 +189,10 @@
         <repository>
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -175,22 +219,20 @@
             <version>4.1.86.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
-        <dependency>
-            <groupId>me.carleslc.Simple-YAML</groupId>
+            <groupId>com.github.Carleslc.Simple-YAML</groupId>
             <artifactId>Simple-Yaml</artifactId>
             <version>1.8.4</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Simple-Yaml-1.8.4.jar</systemPath>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>3.1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
         </dependency>
     </dependencies>
 </project>
