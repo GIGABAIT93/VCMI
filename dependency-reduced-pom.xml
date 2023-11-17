@@ -14,21 +14,6 @@
     </resources>
     <plugins>
       <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <minimizeJar>true</minimizeJar>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
@@ -75,6 +60,41 @@
           <goals>install deploy site-deploy</goals>
           <releaseProfiles>release</releaseProfiles>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>com.velocitypowered:velocity-api</include>
+                  <include>io.netty:netty-buffer</include>
+                  <include>io.netty:netty-transport</include>
+                  <include>io.netty:netty-codec</include>
+                  <include>org.apache.httpcomponents:httpclient</include>
+                  <include>com.github.Carleslc.Simple-YAML:Simple-Yaml</include>
+                  <include>org.mariadb.jdbc:mariadb-java-client</include>
+                </includes>
+              </artifactSet>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>mariadb.properties</exclude>
+                    <exclude>deprecated.properties</exclude>
+                    <exclude>driver.properties</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -135,6 +155,10 @@
       <id>papermc-repo</id>
       <url>https://repo.papermc.io/repository/maven-public/</url>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -142,12 +166,6 @@
       <artifactId>velocity-api</artifactId>
       <version>3.1.2-SNAPSHOT</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.33</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
   <reporting>
