@@ -42,6 +42,11 @@ public class RconManagerCommand implements SimpleCommand {
 
 		String command = buildCommand(args, server);
 
+		if (command.isEmpty()) {
+			sendMessage(sender, Lang.rcon_empty_command.get());
+			return;
+		}
+
 		if ("all".equals(server)) {
 			executeCommandForAllServers(invocation, command, sender);
 		} else if (RconManagerModule.serverIs(server)) {
@@ -87,7 +92,7 @@ public class RconManagerCommand implements SimpleCommand {
 	}
 
 	private void executeCommandForServer(Invocation invocation, String command, CommandSource sender,
-                                         String server) {
+										 String server) {
 		if (hasPermission(invocation, "all") || hasPermission(invocation, server)) {
 			tryExecuteRconCommand(command, sender, server);
 		} else {
@@ -95,8 +100,7 @@ public class RconManagerCommand implements SimpleCommand {
 		}
 	}
 
-	private void executeCommandForAllServers(Invocation invocation, String command,
-                                             CommandSource sender) {
+	private void executeCommandForAllServers(Invocation invocation, String command, CommandSource sender) {
 		for (String server_name : RconManagerModule.getServers()) {
 			if (hasPermission(invocation, "all") || hasPermission(invocation, server_name)) {
 				tryExecuteRconCommand(command, sender, server_name);
@@ -126,10 +130,8 @@ public class RconManagerCommand implements SimpleCommand {
 
 	private String buildCommand(String[] args, String server) {
 		StringBuilder sb = new StringBuilder();
-		for (String arg : args) {
-			if (!arg.equals(server)) {
-				sb.append(" ").append(arg);
-			}
+		for (int i = 1; i < args.length; i++) {
+			sb.append(args[i]).append(" ");
 		}
 		return sb.toString().trim();
 	}

@@ -14,7 +14,7 @@ public enum Lang {
 	bash_out_script("bash_out_script"), bash_runner_reload("bash_runner_reload"),
 	php_runner_reload("php_runner_reload"), php_out_script("php_out_script"),
 	rcon_connect_notify("rcon_connect_notify"), rcon_auth_error("rcon_auth_error"), rcon_io_error("rcon_io_error"),
-	rcon_unknown_error("rcon_unknown_error");
+	rcon_unknown_error("rcon_unknown_error"), rcon_empty_command("rcon_empty_command"), rcon_invalid_command_or_server("rcon_invalid_command_or_server");
 
 	private final String key;
 

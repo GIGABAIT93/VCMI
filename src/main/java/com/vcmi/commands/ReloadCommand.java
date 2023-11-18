@@ -17,7 +17,9 @@ public final class ReloadCommand implements SimpleCommand {
 			source.sendMessage(Lang.no_perms.get());
 			return;
 		}
-		VCMI.database.close();
+		if (VCMI.database != null) {
+			VCMI.database.close();
+		}
 		VCMI.loadPlugin();
 		source.sendMessage(Lang.reload.get());
 	}

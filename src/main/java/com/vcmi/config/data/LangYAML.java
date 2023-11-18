@@ -45,6 +45,8 @@ public class LangYAML {
             setConfigValue("rcon_server_reload", "&aConfigurations Rcon Server reloaded");
             setConfigValue("rcon_connect_notify", "&aRcon connection from: &7[&3&l{address}&7] &aCommand: &3&l{command}");
             setConfigValue("rcon_usage", "&6Usage: rcon [server/all/reload] [command]");
+            setConfigValue("rcon_empty_command", "&6Command is empty!");
+            setConfigValue("rcon_invalid_command_or_server", "&6Invalid command or server name");
             setConfigValue("rcon_response", "&6{server}: &a{response}");
             setConfigValue("rcon_response_empty", "There is no response from the server");
 

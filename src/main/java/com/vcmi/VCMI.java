@@ -81,6 +81,8 @@ public class VCMI {
     @Subscribe
     public void onShutdown(ProxyShutdownEvent event) {
         RconServerModule.disable();
-        database.close();
+        if (database != null) {
+            database.close();
+        }
     }
 }
