@@ -60,6 +60,9 @@ public class ConfigYAML {
         yamlFile.setComment("modules.request-module", "Request module. Allows you to perform HTTP requests");
         setConfigValue("modules.request-module", true);
 
+        yamlFile.setComment("modules.player-time", "Player Time module. Keeps statistics of the player's playing time");
+        setConfigValue("modules.player-time", true);
+
         yamlFile.setComment("modules.text-reader", "Text Reader module. Allows reading and outputting text files and chat");
         setConfigValue("modules.text-reader", true);
 
@@ -68,15 +71,15 @@ public class ConfigYAML {
 
     private static void populateDatabase() {
         yamlFile.setBlankLine("database");
-        yamlFile.setComment("database.type", "\"sqlite\" or \"mysql\"");
-        setConfigValue("database.enable", "false");
+        yamlFile.setComment("database.type", "only \"mysql\"");
+        setConfigValue("database.enable", false);
         setConfigValue("database.type", "sqlite");
         setConfigValue("database.name", "server");
         setConfigValue("database.user", "root");
         setConfigValue("database.password", "password");
         setConfigValue("database.host", "localhost");
         setConfigValue("database.port", "3306");
-        setConfigValue("database.use_ssl", "false");
+        setConfigValue("database.use_ssl", false);
         setConfigValue("database.table_prefix", "vcmi_");
     }
 

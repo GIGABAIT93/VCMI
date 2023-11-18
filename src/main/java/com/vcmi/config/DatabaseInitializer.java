@@ -9,24 +9,9 @@ public class DatabaseInitializer {
     }
 
     public void initializeTables() {
-        createPlayerTimeTable();
+//        createPlayerTimeTable();
     }
-    private void createPlayerTimeTable() {
-        String columns = "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), uuid VARCHAR(255), play_time BIGINT";
-        database.createTableAsync("player_time", columns);
+    public void createPlayerTimeTable() {
+        database.createTableAsync("player_times", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), uuid VARCHAR(255), play_time BIGINT");
     }
-
-
-
-//    private void createPlayerPlayTimeTable() {
-//        String columns = "id INT PRIMARY KEY, name VARCHAR(255), uuid VARCHAR(255), play_time INT";
-//        database.createTableAsync("players_time", columns)
-//                .thenAccept(success -> {
-//                    if (success) {
-//                        System.out.println("Player play time table created");
-//                    } else {
-//                        System.out.println("Failed to create player play time table");
-//                    }
-//                });
-//    }
 }

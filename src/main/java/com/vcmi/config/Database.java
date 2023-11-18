@@ -5,6 +5,7 @@ import com.vcmi.VCMI;
 import java.io.File;
 import java.math.BigInteger;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class Database {
@@ -69,13 +70,42 @@ public class Database {
 		return null;
 	}
 
+
 	private PreparedStatement prepareStatement(String query, Object... parameters) throws SQLException {
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		for (int i = 0; i < parameters.length; i++) {
-			preparedStatement.setObject(i + 1, parameters[i]);
+			if (parameters[i] instanceof String) {
+				preparedStatement.setString(i + 1, (String) parameters[i]);
+			} else if (parameters[i] instanceof Integer) {
+				preparedStatement.setInt(i + 1, (Integer) parameters[i]);
+			} else if (parameters[i] instanceof Long) {
+				preparedStatement.setLong(i + 1, (Long) parameters[i]);
+			} else if (parameters[i] instanceof Double) {
+				preparedStatement.setDouble(i + 1, (Double) parameters[i]);
+			} else if (parameters[i] instanceof Float) {
+				preparedStatement.setFloat(i + 1, (Float) parameters[i]);
+			} else if (parameters[i] instanceof Boolean) {
+				preparedStatement.setBoolean(i + 1, (Boolean) parameters[i]);
+			} else if (parameters[i] instanceof Byte) {
+				preparedStatement.setByte(i + 1, (Byte) parameters[i]);
+			} else if (parameters[i] instanceof Short) {
+				preparedStatement.setShort(i + 1, (Short) parameters[i]);
+			} else if (parameters[i] instanceof Date) {
+				preparedStatement.setDate(i + 1, (Date) parameters[i]);
+			} else if (parameters[i] instanceof Time) {
+				preparedStatement.setTime(i + 1, (Time) parameters[i]);
+			} else if (parameters[i] instanceof Timestamp) {
+				preparedStatement.setTimestamp(i + 1, (Timestamp) parameters[i]);
+			} else {
+				preparedStatement.setObject(i + 1, parameters[i]);
+			}
 		}
 		return preparedStatement;
 	}
+
+
+
+
 
 	@FunctionalInterface
 	private interface SQLExecutor<T> {
@@ -121,16 +151,16 @@ public class Database {
 		return executeQuerySync(constructSelectQuery(tableName, columns, where), castValuesToLong(values));
 	}
 
-	public CompletableFuture<Boolean> createTableAsync(String tableName, String columns) {
-		return CompletableFuture.supplyAsync(() -> createTable(tableName, columns));
+	public void createTableAsync(String tableName, String columns) {
+		CompletableFuture.supplyAsync(() -> createTable(tableName, columns));
 	}
 
-	public CompletableFuture<Boolean> insertAsync(String tableName, String columns, Object... values) {
-		return CompletableFuture.supplyAsync(() -> insert(tableName, columns, castValuesToLong(values)));
+	public void insertAsync(String tableName, String columns, Object... values) {
+		CompletableFuture.supplyAsync(() -> insert(tableName, columns, castValuesToLong(values)));
 	}
 
-	public CompletableFuture<Boolean> updateAsync(String tableName, String set, String where, Object... values) {
-		return CompletableFuture.supplyAsync(() -> update(tableName, set, where, castValuesToLong(values)));
+	public void updateAsync(String tableName, String set, String where, Object... values) {
+		CompletableFuture.supplyAsync(() -> update(tableName, set, where, castValuesToLong(values)));
 	}
 
 	public CompletableFuture<Boolean> deleteAsync(String tableName, String where, Object... values) {
@@ -150,13 +180,26 @@ public class Database {
 	}
 
 	public boolean exists(String tableName, String where, Object... values) {
-		try (ResultSet resultSet = select(tableName, "*", where, castValuesToLong(values))) {
+		try (ResultSet resultSet = select(tableName, "*", where, values)) {
 			return resultSet.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
+
+	public boolean tableExists(String tableName) {
+		try {
+			DatabaseMetaData dbm = connection.getMetaData();
+			try (ResultSet tables = dbm.getTables(null, null, appendPrefix(tableName), null)) {
+				return tables.next();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 
 	private String appendPrefix(String tableName) {
 		return tablePrefix + tableName;
@@ -168,10 +211,6 @@ public class Database {
 				connection.close();
 			}
 		} catch (Exception ignored) {}
-	}
-
-	public CompletableFuture<Void> closeAsync() {
-		return CompletableFuture.runAsync(this::close);
 	}
 
 	private Object[] castValuesToLong(Object... values) {

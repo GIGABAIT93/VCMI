@@ -7,6 +7,7 @@ import com.vcmi.commands.ReloadCommand;
 import com.vcmi.modules.bash.BashModule;
 import com.vcmi.modules.event.EventsModule;
 import com.vcmi.modules.php.PhpModule;
+import com.vcmi.modules.playertime.PlayerTimeModule;
 import com.vcmi.modules.rcon.manager.RconManagerModule;
 import com.vcmi.modules.rcon.server.RconServerModule;
 import com.vcmi.modules.requests.RequestsModule;
@@ -22,6 +23,7 @@ public class Modules {
             "bash-runner", new ModuleConfig(BashModule::enable, BashModule::disable),
             "events-manager", new ModuleConfig(EventsModule::enable, EventsModule::disable),
             "request-module",  new ModuleConfig(RequestsModule::enable, RequestsModule::disable),
+            "player-time",  new ModuleConfig(PlayerTimeModule::enable, PlayerTimeModule::disable),
             "text-reader",  new ModuleConfig(TextReaderModule::enable, TextReaderModule::disable)
     );
 

@@ -14,7 +14,9 @@ public enum Lang {
 	bash_out_script("bash_out_script"), bash_runner_reload("bash_runner_reload"),
 	php_runner_reload("php_runner_reload"), php_out_script("php_out_script"),
 	rcon_connect_notify("rcon_connect_notify"), rcon_auth_error("rcon_auth_error"), rcon_io_error("rcon_io_error"),
-	rcon_unknown_error("rcon_unknown_error"), rcon_empty_command("rcon_empty_command"), rcon_invalid_command_or_server("rcon_invalid_command_or_server");
+	rcon_unknown_error("rcon_unknown_error"), rcon_empty_command("rcon_empty_command"), rcon_invalid_command_or_server("rcon_invalid_command_or_server"),
+	player_time("player_time"), player_not_found("player_not_found"), player_time_other("player_time_other"), player_time_usage("player_time_usage"),
+	player_time_days("player_time_days"), player_time_hours("player_time_hours"), player_time_minutes("player_time_minutes"), player_time_seconds("player_time_seconds");
 
 	private final String key;
 

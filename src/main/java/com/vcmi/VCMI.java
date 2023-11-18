@@ -15,6 +15,7 @@ import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
 import com.velocitypowered.api.plugin.Plugin;
+import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import java.nio.file.Path;
@@ -30,12 +31,14 @@ import java.nio.file.Path;
 public class VCMI {
 
     public static ProxyServer server;
+    public static PluginContainer pluginContainer;
     public static Path pluginPath;
     public static Database database;
 
     @Inject
-    public VCMI(ProxyServer server, @DataDirectory Path dataDirectory) {
+    public VCMI(ProxyServer server, PluginContainer container, @DataDirectory Path dataDirectory) {
         VCMI.server = server;
+        VCMI.pluginContainer = container;
         pluginPath = dataDirectory;
     }
 
@@ -43,14 +46,6 @@ public class VCMI {
         Config.initialise();
         Lang.initialise();
         Modules.load();
-
-//        if (database.exists("player_time", "name = ?", "GIGABAIT")){
-//            database.deleteAsync("player_time", "name = ?", "GIGABAIT");
-//        } else {
-//            database.insertAsync("player_time", "name, uuid, play_time", "GIGABAIT", "SJDJDSAKLSD", "2312311212");
-//        }
-
-
     }
 
 

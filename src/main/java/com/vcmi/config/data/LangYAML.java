@@ -60,6 +60,16 @@ public class LangYAML {
             setConfigValue("php_runner_reload", "&aConfigurations PHP Runner reloaded");
             setConfigValue( "php_out_script", "{response}");
 
+            yamlFile.setComment("player_time_usage","PlayerTime Module");
+            setConfigValue( "player_time_usage", "&6Usage: vptime [Player]");
+            setConfigValue("player_time", "&aYour game time: {time}");
+            setConfigValue( "player_time_other", "&aGame time {player}: {time}");
+            setConfigValue( "player_not_found", "&c{player} not found");
+            setConfigValue( "player_time_days", " days ");
+            setConfigValue( "player_time_hours", " hours ");
+            setConfigValue( "player_time_minutes", " minutes ");
+            setConfigValue( "player_time_seconds", " seconds ");
+
             yamlFile.save();
 
         } catch (IOException e) {
