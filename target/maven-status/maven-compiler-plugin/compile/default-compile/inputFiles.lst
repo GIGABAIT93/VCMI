@@ -1,33 +1,36 @@
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\Modules.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\requests\RequestCommand.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\MalformedPacketException.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconServer.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\php\PHPConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\data\ConfigYAML.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\event\EventsConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\event\EventManager.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\bash\BASHCommand.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconManagerCommand.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\php\PHPCommand.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\data\RconServerYAML.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconManagerConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\VCMI.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconPacket.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\bash\BASHConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\data\EventsYAML.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\data\RconManagerYAML.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\commands\ReloadCommand.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\data\LangYAML.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\Lang.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\Message.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\Rcon.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\Config.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconServerConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\requests\HttpRequest.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\requests\RequestsConfig.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\config\Database.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconHandler.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\Util.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconFramingHandler.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\manager\AuthenticationException.java
-D:\Programs\IntelliJ IDEA 2023.1.2\artifacts\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconCommandSource.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\Config.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\data\RconServerYAML.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\DatabaseInitializer.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\Rcon.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconHandler.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\data\LangYAML.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\event\EventsModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\data\ConfigYAML.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconServerModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\Message.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\bash\BASHCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\requests\HttpRequest.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\data\EventsYAML.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\event\EventManager.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconCommandSource.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\data\RconManagerYAML.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\text\TextReaderCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconServer.java
+D:\Git\VCMI\src\main\java\com\vcmi\VCMI.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconPacket.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\text\TextReaderModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\php\PHPCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\Modules.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\requests\RequestCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconManagerModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\MalformedPacketException.java
+D:\Git\VCMI\src\main\java\com\vcmi\commands\ReloadCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\RconManagerCommand.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\php\PhpModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\server\RconFramingHandler.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\Database.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\requests\RequestsModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\bash\BashModule.java
+D:\Git\VCMI\src\main\java\com\vcmi\Util.java
+D:\Git\VCMI\src\main\java\com\vcmi\config\Lang.java
+D:\Git\VCMI\src\main\java\com\vcmi\modules\rcon\manager\AuthenticationException.java
