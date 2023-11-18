@@ -147,13 +147,13 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>com.velocitypowered:velocity-api</include>
                                     <include>io.netty:netty-buffer</include>
                                     <include>io.netty:netty-transport</include>
                                     <include>io.netty:netty-codec</include>
-                                    <include>org.apache.httpcomponents:httpclient</include>
+                                    <include>org.apache.httpcomponents</include>
                                     <include>com.github.Carleslc.Simple-YAML:Simple-Yaml</include>
                                     <include>org.mariadb.jdbc:mariadb-java-client</include>
+                                    <include>org.slf4j</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -228,7 +228,6 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>3.1.4</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
