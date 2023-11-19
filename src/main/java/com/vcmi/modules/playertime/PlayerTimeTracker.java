@@ -71,4 +71,17 @@ public class PlayerTimeTracker {
         }
         return 0;
     }
+
+    public void updateAllOnlineTimes() {
+        long currentTime = System.currentTimeMillis();
+        for (UUID playerId : playerOnlineTime.keySet()) {
+            Long joinTime = playerOnlineTime.get(playerId);
+            if (joinTime != null) {
+                long totalTimeOnline = currentTime - joinTime;
+                updatePlayerTimeInDatabase(playerId, totalTimeOnline);
+                playerOnlineTime.put(playerId, currentTime);
+            }
+        }
+    }
+
 }

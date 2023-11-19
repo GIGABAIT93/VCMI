@@ -7,6 +7,8 @@ import com.vcmi.config.Config;
 import com.vcmi.config.Database;
 import com.vcmi.config.DatabaseInitializer;
 
+import java.util.concurrent.TimeUnit;
+
 public class PlayerTimeModule {
 
     private static PlayerEventListener eventListener;
@@ -35,6 +37,12 @@ public class PlayerTimeModule {
             eventListener = new PlayerEventListener(timeTracker);
             VCMI.server.getEventManager().register(VCMI.pluginContainer, eventListener);
             Util.registerCommand("vplayertime", "vptime", new PlayerTimeCommand(timeTracker));
+
+
+            VCMI.server.getScheduler().buildTask(VCMI.pluginContainer, timeTracker::updateAllOnlineTimes)
+                    .delay(1, TimeUnit.MINUTES)
+                    .repeat(1, TimeUnit.MINUTES)
+                    .schedule();
         } else {
             Message.warn("PlayerTime module. A database connection could not be established");
             disable();
