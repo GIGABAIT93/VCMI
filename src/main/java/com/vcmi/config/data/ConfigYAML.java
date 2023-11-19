@@ -73,12 +73,12 @@ public class ConfigYAML {
         yamlFile.setBlankLine("database");
         yamlFile.setComment("database.type", "only \"mysql\"");
         setConfigValue("database.enable", false);
-        setConfigValue("database.type", "sqlite");
+        setConfigValue("database.type", "mysql");
         setConfigValue("database.name", "server");
         setConfigValue("database.user", "root");
         setConfigValue("database.password", "password");
         setConfigValue("database.host", "localhost");
-        setConfigValue("database.port", "3306");
+        setConfigValue("database.port", 3306);
         setConfigValue("database.use_ssl", false);
         setConfigValue("database.table_prefix", "vcmi_");
     }

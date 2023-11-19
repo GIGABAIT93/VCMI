@@ -49,14 +49,8 @@ public class RconManagerYAML {
         );
 
         setConfigValue("servers.lobby.ip", "0.0.0.0");
-        setConfigValue("servers.lobby.port", "25566");
+        setConfigValue("servers.lobby.port", 25566);
         setConfigValue("servers.lobby.pass", "rcon password");
-
-        setConfigValue("servers.vanilla.ip", "0.0.0.0");
-        setConfigValue("servers.vanilla.port", "25566");
-        setConfigValue("servers.vanilla.pass", "rcon password");
-
-
 
         yamlFile.setComment("tab-complete-list", "List of rcon server command arguments");
         setConfigValue("tab-complete-list", new String[]{

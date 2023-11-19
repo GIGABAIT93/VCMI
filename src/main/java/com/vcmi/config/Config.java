@@ -83,23 +83,4 @@ public class Config extends YamlConfiguration {
 			}
 		}
 	}
-	public static void debugAllMethods() {
-		Message.info("Initialising config:");
-		initialise();
-		Message.info("Reloading config:");
-		reload();
-		Message.info("Modules: " + getModules());
-		getModules().forEach( m -> {
-			Message.info("Modules (with specific identifier): " + m + " " + getModules(m));
-		});
-		Message.info("Lang: " + getLang());
-		Message.info("Database type: " + getDatabaseType());
-		Message.info("Database name: " + getDatabaseName());
-		Message.info("Database user: " + getDatabaseUser());
-		Message.info("Database password: " + getDatabasePassword());
-		Message.info("Database host: " + getDatabaseHost());
-		Message.info("Database port: " + getDatabasePort());
-		Message.info("Database table prefix: " + getDatabaseTablePrefix());
-		Message.info("Use UUID: " + useUUID());
-	}
 }

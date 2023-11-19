@@ -46,7 +46,7 @@ public class RconServerYAML {
         );
 
         yamlFile.setComment("port", "Rcon port");
-        setConfigValue("port", "25570");
+        setConfigValue("port", 25570);
 
         yamlFile.setComment("password", "Rcon password");
         setConfigValue("password", "password");
