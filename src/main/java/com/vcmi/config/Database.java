@@ -13,6 +13,8 @@ public class Database {
 	private Connection connection;
 	private String tablePrefix;
 
+	public boolean enabled = false;
+
 	public boolean connect() {
 		String type = Config.getDatabaseType();
 		tablePrefix = Config.getDatabaseTablePrefix();
@@ -31,6 +33,7 @@ public class Database {
 		try {
 			connection = DriverManager.getConnection("jdbc:sqlite:" + directory + "/" + Config.getDatabaseName() + ".db");
 			Message.info("Connection to the SQL database is successful");
+			enabled = true;
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -45,6 +48,7 @@ public class Database {
 					"jdbc:mariadb://" + Config.getDatabaseHost() + ":" + Config.getDatabasePort() + "/" + Config.getDatabaseName() + "?useSSL=" + Config.getSsl(),
 					Config.getDatabaseUser(), Config.getDatabasePassword());
 			Message.info("Connection to the MySQL database is successful");
+			enabled = true;
 			return true;
 		} catch (ClassNotFoundException | SQLException e) {
 			Message.error("Failed to connect to MySQL!");
@@ -132,7 +136,13 @@ public class Database {
 
 	// The main methods
 	public boolean createTable(String tableName, String columns) {
-		return executeUpdateSync("CREATE TABLE IF NOT EXISTS " + appendPrefix(tableName) + " (" + columns + ")");
+		String query;
+		if (Config.getDatabaseType().equalsIgnoreCase("sqlite")) {
+			query = "CREATE TABLE IF NOT EXISTS " + appendPrefix(tableName) + " (" + columns.replace("INT PRIMARY KEY AUTO_INCREMENT", "INTEGER PRIMARY KEY") + ")";
+		} else {
+			query = "CREATE TABLE IF NOT EXISTS " + appendPrefix(tableName) + " (" + columns + ")";
+		}
+		return executeUpdateSync(query);
 	}
 
 	public boolean insert(String tableName, String columns, Object... values) {

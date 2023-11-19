@@ -17,9 +17,6 @@ public class PlayerTimeModule {
 
     public static void disable() {
         PlayerTimeCommand.unregister();
-//        if (eventListener != null) {
-//            VCMI.server.getEventManager().unregister(eventListener);
-//        }
         Message.warn("PlayerTime module disabled");
     }
 
@@ -28,8 +25,8 @@ public class PlayerTimeModule {
             Message.warn("The PlayerTime module requires the use of a database, enable it in the configuration file");
             return;
         }
-        Database database = new Database();
-        if (database.connect()){
+        Database database = VCMI.database;
+        if (database.enabled){
             if (!database.tableExists("player_times")){
                 DatabaseInitializer databaseInitializer = new DatabaseInitializer(database);
                 databaseInitializer.createPlayerTimeTable();
