@@ -21,6 +21,16 @@ public class Database {
 		return (type.equalsIgnoreCase("sqlite")) ? connectSQLite() : connectMySQL();
 	}
 
+	public synchronized void checkConnection() {
+		try {
+			if (connection == null || connection.isClosed()) {
+				connect();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private boolean connectSQLite() {
 		String directory = VCMI.pluginPath + "/storage";
 		File storageDirectory = new File(directory);
@@ -58,14 +68,17 @@ public class Database {
 	}
 
 	private boolean executeUpdateSync(String query, Object... parameters) {
+		checkConnection();
 		return executeSync(query, parameters, PreparedStatement::executeUpdate) != null;
 	}
 
 	private ResultSet executeQuerySync(String query, Object... parameters) {
+		checkConnection();
 		return executeSync(query, parameters, PreparedStatement::executeQuery);
 	}
 
 	private <T> T executeSync(String query, Object[] parameters, SQLExecutor<T> executor) {
+		checkConnection();
 		try (PreparedStatement preparedStatement = prepareStatement(query, parameters)) {
 			return executor.execute(preparedStatement);
 		} catch (SQLException e) {
@@ -76,6 +89,7 @@ public class Database {
 
 
 	private PreparedStatement prepareStatement(String query, Object... parameters) throws SQLException {
+		checkConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		for (int i = 0; i < parameters.length; i++) {
 			if (parameters[i] instanceof String) {
@@ -199,6 +213,7 @@ public class Database {
 	}
 
 	public boolean tableExists(String tableName) {
+		checkConnection();
 		try {
 			DatabaseMetaData dbm = connection.getMetaData();
 			try (ResultSet tables = dbm.getTables(null, null, appendPrefix(tableName), null)) {
