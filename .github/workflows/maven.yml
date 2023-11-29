@@ -34,3 +34,9 @@ jobs:
       with:
         name: VCMI Release
         path: target/*.jar
+    - name: Upload Artifacts Test
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: VCMI Release
+        path: /home/runner/work/VCMI/VCMI/target/VCMI-*.jar
+
