@@ -28,4 +28,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml        # output jar
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: VCMI Release
+        path: target/*.jar
