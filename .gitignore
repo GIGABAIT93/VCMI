@@ -1,5 +1,2 @@
-/target/*
-target/*
-target
-/target/
+target/
 dependency-reduced-pom.xml
