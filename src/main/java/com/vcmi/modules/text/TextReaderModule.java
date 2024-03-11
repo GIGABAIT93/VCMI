@@ -33,8 +33,7 @@ public class TextReaderModule {
     }
 
     public static String readTxt(String filename) throws IOException {
-        String file = Files.readString(dir.resolve(filename + ".txt"), StandardCharsets.UTF_8);
-        return file;
+        return Files.readString(dir.resolve(filename + ".txt"), StandardCharsets.UTF_8);
     }
 
     public static String[] getTxtFileNamesWithoutExtension() {

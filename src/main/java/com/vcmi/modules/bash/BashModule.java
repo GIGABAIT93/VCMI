@@ -26,7 +26,7 @@ public class BashModule {
 	}
 
 	public static void enable() {
-		Util.registerCommand("bash", "vubash", new BASHCommand());
+		Util.registerCommand("bash", "vbash", new BASHCommand());
 		Util.createDir(VCMI.pluginPath.toString() + File.separator + "bash");
 		load();
 	}
