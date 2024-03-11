@@ -1,16 +1,11 @@
 
 # VCMI Plugin
 
-VCMI Velocity Plugin is a comprehensive tool designed to enhance the functionality of your Minecraft server, offering a variety of modules for detailed server management and control. Each module caters to different server needs, with options to enable or disable them as required.
-
-## Features
-
-VCMI Plugin provides several key modules, each designed with specific functionalities to improve your server's operation and user experience.
-
+VCMI Velocity Plugin - This one offers a variety of modules for detailed server management and monitoring. Each module can be turned on or off as needed. The plugin is designed to be as flexible as possible, allowing you to customize your server's functionality to your specific needs.
 
 ## Modules
 ### PlayerTime:
-Tracks each player's playing time using a database. This module offers commands to toggle its functionality on or off.
+Tracks the total playing time of each player on the server, providing the ability to view the time played by a specific player or the entire server.
 - `/vptime`: Returns the player's total playing time.
 - `/vptime <player>`: Returns the specified player's total playing time.
 
@@ -27,7 +22,7 @@ servers:
   lobby:
     ip: 0.0.0.0
     port: 25575
-    pass: asdjsldka;lskd;laskd;lasd
+    pass: asdasdadsasadadsdasdasdasdasd
   vanilla:
     ip: 0.0.0.0
     port: 25576
@@ -41,7 +36,7 @@ tab-complete-list:
 ```
 
 ### RconServer:
-Establishes an RCON server capable of receiving commands from remote clients, facilitating external server management.
+Establishes an RCON for Velocity server capable of receiving commands from remote clients, facilitating external server management.
 ```yaml
 # Rcon server settings
 # Rcon port
@@ -53,7 +48,7 @@ colored: true
 ```
 
 ### PhpModule:
-Offers the ability to execute PHP scripts, extending the server's functionality with PHP's scripting capabilities.
+Offers the ability to execute PHP scripts, extending the server's functionality with PHP's scripting capabilities. Each script can be called through a command in chat or console.
 - `/php <script/reload> <args>`: Executes the specified PHP script.
 ```php
 <?php
@@ -74,7 +69,7 @@ echo "\n&6--------------------------------------------------------------\n";
 ```
 
 ### BashModule:
-Provides a direct interface for server administrators to execute Bash scripts via in-game chat or console.
+Provides a direct interface for server administrators to execute Bash scripts via in-game chat or console. Each script can be called through a command in chat or console.
 - `/bash <script/reload> <args>`: Executes the specified Bash script.
 ```shell
 #!/bin/bash
@@ -119,7 +114,7 @@ Reads and outputs the contents of text files located in the "text" folder to pla
 ```
 
 ### HttpRequest:
-Performs HTTP requests to specified URLs, supporting both GET and POST requests. Configuration files are used to manage request parameters. Allows you to execute commands depending on the HTTP request response.
+Performs HTTP requests to specified URLs, supporting both GET and POST requests. Configuration files are used to manage request parameters. Allows you to execute commands depending on the HTTP request response. Each individual configuration file corresponds to a single request.
 ```yaml
 # The URL of the API to be queried.
 url: "https://domain.com/api/minecraft/link"
@@ -161,14 +156,19 @@ debug: false
 ```
 
 ### EventsManager:
-A utility to assist in handling the events registered within the EventsModule, ensuring smooth event processing.
+Allows you to execute commands when certain events occur on the server. The module supports the following events:
 ```yaml
+# Events settings 
+# Placeholders: {player}, {server}, {fromServer}
+# [console] - run console command
+# [delay] (seconds) - delay seconds command
+
 events:
   on_join_commands:
     enabled: false
     commands:
       - '[delay] 3'
-      - '[console] g hello {player}'
+      - '[console] g test {player}'
   on_leave_commands:
     enabled: false
     commands:
@@ -190,6 +190,7 @@ events:
     enabled: false
     commands:
       - '[console] alert &6Server {server} is stop'
+
 ```
 
 
