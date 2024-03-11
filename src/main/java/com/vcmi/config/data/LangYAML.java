@@ -70,6 +70,9 @@ public class LangYAML {
             setConfigValue( "player_time_minutes", " minutes ");
             setConfigValue( "player_time_seconds", " seconds ");
 
+            yamlFile.setComment("modules","Modules");
+            setConfigValue("modules","{module} is {status}");
+
             yamlFile.save();
 
         } catch (IOException e) {
