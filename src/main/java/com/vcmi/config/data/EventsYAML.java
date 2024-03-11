@@ -54,6 +54,16 @@ public class EventsYAML {
                     "server {server}"
             });
 
+            setConfigValue("events.on_server_running.enabled", true);
+            setConfigValue("events.on_server_running.commands", new String[]{
+                    "[console] alert &6Server {server} is running"
+            });
+
+            setConfigValue("events.on_server_stop.enabled", true);
+            setConfigValue("events.on_server_stop.commands", new String[]{
+                    "[console] alert &6Server {server} is stop"
+            });
+
             yamlFile.save();
 
         } catch (IOException e) {

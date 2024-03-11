@@ -67,15 +67,18 @@ public class VCMI {
         EventManager.onServerSwitch(event);
     }
 
+
     @Subscribe
     public void onEnable(ProxyInitializeEvent event) {
         loadPlugin();
         Message.logHeader();
+        EventManager.onServerRunning(event);
     }
 
     @Subscribe
     public void onShutdown(ProxyShutdownEvent event) {
         RconServerModule.disable();
+        EventManager.onServerStop(event);
         if (database != null) {
             database.close();
         }

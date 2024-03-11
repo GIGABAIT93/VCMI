@@ -32,7 +32,8 @@ public class EventsModule extends YamlConfiguration {
 
 	public enum Events {
 		on_join_commands("on_join_commands"), on_leave_commands("on_leave_commands"),
-		on_server_switch("on_server_switch"), on_server_kick("on_server_kick");
+		on_server_switch("on_server_switch"), on_server_kick("on_server_kick"),
+		on_server_running("on_server_running"), on_server_stop("on_server_stop");
 
 		private final String key;
 
