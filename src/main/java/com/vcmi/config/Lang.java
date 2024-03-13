@@ -17,7 +17,7 @@ public enum Lang {
 	rcon_unknown_error("rcon_unknown_error"), rcon_empty_command("rcon_empty_command"), rcon_invalid_command_or_server("rcon_invalid_command_or_server"),
 	player_time("player_time"), player_not_found("player_not_found"), player_time_other("player_time_other"), player_time_usage("player_time_usage"),
 	player_time_days("player_time_days"), player_time_hours("player_time_hours"), player_time_minutes("player_time_minutes"), player_time_seconds("player_time_seconds"),
-	modules("modules");
+	modules("modules"), help("help");
 
 	private final String key;
 

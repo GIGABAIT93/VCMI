@@ -2,8 +2,10 @@ package com.vcmi.config.data;
 
 import com.vcmi.config.Config;
 import com.vcmi.VCMI;
+import com.vcmi.config.Lang;
 import org.simpleyaml.configuration.file.YamlConfiguration;
 import org.simpleyaml.configuration.file.YamlFile;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -35,13 +37,13 @@ public class LangYAML {
             setConfigValue("no_command", "&cNo such command");
             setConfigValue("reload", "&aAll configurations reloaded");
 
-            yamlFile.setComment("rcon_manager_reload","Rcon Manager");
+            yamlFile.setComment("rcon_manager_reload", "Rcon Manager");
             setConfigValue("rcon_manager_reload", "&aConfigurations Rcon Manager reloaded");
             setConfigValue("rcon_auth_error", "&6{server}: &cAuthentication Error. Please check your server configuration and ensure the server is available");
             setConfigValue("rcon_io_error", "&6{server}: &cIO Error. Please check your server configuration and ensure the server is available");
-            setConfigValue( "rcon_unknown_error", "&6{server}: &cUnknown host error. Please check the server IP address configuration");
+            setConfigValue("rcon_unknown_error", "&6{server}: &cUnknown host error. Please check the server IP address configuration");
 
-            yamlFile.setComment("rcon_server_reload","Rcon Server");
+            yamlFile.setComment("rcon_server_reload", "Rcon Server");
             setConfigValue("rcon_server_reload", "&aConfigurations Rcon Server reloaded");
             setConfigValue("rcon_connect_notify", "&aRcon connection from: &7[&3&l{address}&7] &aCommand: &3&l{command}");
             setConfigValue("rcon_usage", "&6Usage: rcon [server/all/reload] [command]");
@@ -50,28 +52,43 @@ public class LangYAML {
             setConfigValue("rcon_response", "&6{server}: &a{response}");
             setConfigValue("rcon_response_empty", "There is no response from the server");
 
-            yamlFile.setComment("bash_usage","Bash Module");
-            setConfigValue( "bash_usage", "&6Usage: bash [script/reload] [info/(script args)]");
-            setConfigValue( "bash_runner_reload", "&aConfigurations BASH Runner reloaded");
-            setConfigValue( "bash_out_script", "{response}");
+            yamlFile.setComment("bash_usage", "Bash Module");
+            setConfigValue("bash_usage", "&6Usage: bash [script/reload] [info/(script args)]");
+            setConfigValue("bash_runner_reload", "&aConfigurations BASH Runner reloaded");
+            setConfigValue("bash_out_script", "{response}");
 
-            yamlFile.setComment("php_usage","Php Module");
-            setConfigValue( "php_usage", "&6Usage: php [script/reload] [info/(script args)]");
+            yamlFile.setComment("php_usage", "Php Module");
+            setConfigValue("php_usage", "&6Usage: php [script/reload] [info/(script args)]");
             setConfigValue("php_runner_reload", "&aConfigurations PHP Runner reloaded");
-            setConfigValue( "php_out_script", "{response}");
+            setConfigValue("php_out_script", "{response}");
 
-            yamlFile.setComment("player_time_usage","PlayerTime Module");
-            setConfigValue( "player_time_usage", "&6Usage: vptime [Player]");
+            yamlFile.setComment("player_time_usage", "PlayerTime Module");
+            setConfigValue("player_time_usage", "&6Usage: vptime [Player]");
             setConfigValue("player_time", "&aYour game time: {time}");
-            setConfigValue( "player_time_other", "&aGame time {player}: {time}");
-            setConfigValue( "player_not_found", "&c{player} not found");
-            setConfigValue( "player_time_days", " days ");
-            setConfigValue( "player_time_hours", " hours ");
-            setConfigValue( "player_time_minutes", " minutes ");
-            setConfigValue( "player_time_seconds", " seconds ");
+            setConfigValue("player_time_other", "&aGame time {player}: {time}");
+            setConfigValue("player_not_found", "&c{player} not found");
+            setConfigValue("player_time_days", " days ");
+            setConfigValue("player_time_hours", " hours ");
+            setConfigValue("player_time_minutes", " minutes ");
+            setConfigValue("player_time_seconds", " seconds ");
 
-            yamlFile.setComment("modules","Modules");
-            setConfigValue("modules","{module} is {status}");
+            yamlFile.setComment("modules", "Modules");
+            setConfigValue("modules", "{module} is {status}");
+
+            yamlFile.setComment("help", "Help");
+            setConfigValue("help", "&6Available commands:"
+                    + "\n&6/vcmi &7- &6Show help."
+                    + "\n&6/vcmireload &7- &6Reload all configurations."
+                    + "\n&6/vcmimodules &7- &6Show all modules."
+                    + "\n&6/vptime &7- &6Returns your total playing time."
+                    + "\n&6/vptime [player] &7- &6Returns the specified player's total playing time."
+                    + "\n&6/rcon [server/all/reload] [command] &7- &6Sends the specified command to the specified server or all servers."
+                    + "\n&6/php [script/reload] [args] &7- &6Executes the specified PHP script."
+                    + "\n&6/bash [script/reload] [args] &7- &6Executes the specified Bash script."
+                    + "\n&6/rules &7- &6Reads the specified text file."
+                    + "\n&6/readme &7- &6Reads the specified text file."
+            );
+
 
             yamlFile.save();
 
@@ -79,6 +96,7 @@ public class LangYAML {
             e.printStackTrace();
         }
     }
+
     private static void setConfigValue(String path, Object defaultValue) {
         if (!yamlFile.contains(path)) {
             yamlFile.set(path, defaultValue);

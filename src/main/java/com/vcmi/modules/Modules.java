@@ -1,5 +1,6 @@
 package com.vcmi.modules;
 
+import com.vcmi.commands.HelpCommand;
 import com.vcmi.commands.ModulesCommand;
 import com.vcmi.config.Config;
 import com.vcmi.Message;
@@ -30,6 +31,7 @@ public class Modules {
 
     public Modules() {
         Util.registerCommand("vcmireload", "vreload", new ReloadCommand());
+        Util.registerCommand("vcmi", "vcmihelp", new HelpCommand());
         Util.registerCommand("vcmimodules", "vmodules", new ModulesCommand());
         Message.info("...");
         Message.info("VCMI loading modules...");

@@ -17,6 +17,7 @@ public class TextReaderModule {
     public static void load() {
         if (dir.toFile().mkdirs()){
             Util.copyFile(dir.toString(), "rules.txt");
+            Util.copyFile(dir.toString(), "readme.txt");
         }
         Message.info("Text Reader module enabled");
     }
