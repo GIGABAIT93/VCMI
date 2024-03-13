@@ -1,8 +1,5 @@
 package com.vcmi.config;
-
 import com.vcmi.Message;
-import com.vcmi.VCMI;
-import java.io.File;
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;
@@ -17,7 +14,12 @@ public class Database {
 	public boolean connect() {
 		String type = Config.getDatabaseType();
 		tablePrefix = Config.getDatabaseTablePrefix();
-		return (type.equalsIgnoreCase("sqlite")) ? connectSQLite() : connectMySQL();
+
+		if ("h2".equalsIgnoreCase(type)) {
+			return connectH2();
+		} else {
+			return connectMySQL();
+		}
 	}
 
 	public synchronized void checkConnection() {
@@ -30,25 +32,20 @@ public class Database {
 		}
 	}
 
-	private boolean connectSQLite() {
-		String directory = VCMI.pluginPath + "/storage";
-		File storageDirectory = new File(directory);
-
-		if (!storageDirectory.exists() && !storageDirectory.mkdirs()) {
-			Message.error("Failed to create SQL storage directory!");
-			return false;
-		}
-
+	private boolean connectH2() {
 		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + directory + "/" + Config.getDatabaseName() + ".db");
-			Message.info("Connection to the SQL database is successful");
+			Class.forName("org.h2.Driver");
+			String url = "jdbc:h2:./plugins/vcmi/storage/server;MODE=MySQL";
+			connection = DriverManager.getConnection(url, "sa", "");
+			Message.info("Connection to the H2 database in MySQL mode is successful");
 			enabled = true;
 			return true;
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Message.error(e.getMessage());
 			return false;
 		}
 	}
+
 
 	private boolean connectMySQL() {
 		try {
