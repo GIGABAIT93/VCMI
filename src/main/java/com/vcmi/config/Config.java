@@ -1,6 +1,5 @@
 package com.vcmi.config;
 
-import com.vcmi.Message;
 import org.simpleyaml.configuration.file.YamlConfiguration;
 import com.vcmi.config.data.ConfigYAML;
 import java.util.ArrayList;

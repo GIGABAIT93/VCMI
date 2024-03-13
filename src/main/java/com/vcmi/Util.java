@@ -4,29 +4,10 @@ import com.vcmi.modules.FakeConsolePlayer;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.command.SimpleCommand;
-import com.velocitypowered.api.network.ProtocolState;
-import com.velocitypowered.api.network.ProtocolVersion;
-import com.velocitypowered.api.permission.Tristate;
-import com.velocitypowered.api.proxy.ConnectionRequestBuilder;
 import com.velocitypowered.api.proxy.Player;
-import com.velocitypowered.api.proxy.ServerConnection;
-import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
-import com.velocitypowered.api.proxy.messages.ChannelIdentifier;
-import com.velocitypowered.api.proxy.player.PlayerSettings;
-import com.velocitypowered.api.proxy.player.ResourcePackInfo;
-import com.velocitypowered.api.proxy.player.TabList;
-import com.velocitypowered.api.proxy.server.RegisteredServer;
-import com.velocitypowered.api.util.GameProfile;
-import com.velocitypowered.api.util.ModInfo;
-import net.kyori.adventure.identity.Identity;
-import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.Nullable;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetSocketAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -70,8 +51,8 @@ public class Util {
                 file.createNewFile();
             }
 
-        } catch (IOException exception) {
-            exception.printStackTrace();
+        } catch (IOException e) {
+            Message.error(e.getMessage());
         }
     }
 

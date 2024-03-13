@@ -3,7 +3,6 @@ package com.vcmi.commands;
 import com.vcmi.config.Lang;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
-import java.util.List;
 
 public class HelpCommand implements SimpleCommand {
 

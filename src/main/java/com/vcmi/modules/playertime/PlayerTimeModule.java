@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 public class PlayerTimeModule {
 
-    private static PlayerEventListener eventListener;
     public static void enable() {
         Message.info("PlayerTime module enabled");
         initialize();
@@ -34,7 +33,7 @@ public class PlayerTimeModule {
                 databaseInitializer.createPlayerTimeTable();
             }
             PlayerTimeTracker timeTracker = new PlayerTimeTracker(database);
-            eventListener = new PlayerEventListener(timeTracker);
+            PlayerEventListener eventListener = new PlayerEventListener(timeTracker);
             VCMI.server.getEventManager().register(VCMI.pluginContainer, eventListener);
             Util.registerCommand("vplayertime", "vptime", new PlayerTimeCommand(timeTracker));
 

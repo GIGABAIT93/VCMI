@@ -97,7 +97,7 @@ public class RconHandler extends SimpleChannelInboundHandler<ByteBuf> {
 					message = Lang.no_command.getClean();
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				Message.error(e.getMessage());
 				success = false;
 				message = Lang.unknown_error.getClean();
 			}
@@ -130,7 +130,7 @@ public class RconHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	}
 
 	private void sendLargeResponse(ChannelHandlerContext ctx, int requestId, String payload) {
-		if (payload.length() == 0) {
+		if (payload.isEmpty()) {
 			sendResponse(ctx, requestId, TYPE_RESPONSE, "");
 			return;
 		}

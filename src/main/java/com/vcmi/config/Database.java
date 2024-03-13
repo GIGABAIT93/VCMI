@@ -5,7 +5,6 @@ import com.vcmi.VCMI;
 import java.io.File;
 import java.math.BigInteger;
 import java.sql.*;
-import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class Database {
@@ -27,7 +26,7 @@ public class Database {
 				connect();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Message.error(e.getMessage());
 		}
 	}
 
@@ -46,7 +45,7 @@ public class Database {
 			enabled = true;
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Message.error(e.getMessage());
 			return false;
 		}
 	}
@@ -61,8 +60,7 @@ public class Database {
 			enabled = true;
 			return true;
 		} catch (ClassNotFoundException | SQLException e) {
-			Message.error("Failed to connect to MySQL!");
-			e.printStackTrace();
+			Message.error("Failed to connect to MySQL: " + e.getMessage());
 			return false;
 		}
 	}
@@ -82,7 +80,7 @@ public class Database {
 		try (PreparedStatement preparedStatement = prepareStatement(query, parameters)) {
 			return executor.execute(preparedStatement);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Message.error(e.getMessage());
 		}
 		return null;
 	}
@@ -207,7 +205,7 @@ public class Database {
 		try (ResultSet resultSet = select(tableName, "*", where, values)) {
 			return resultSet.next();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Message.error(e.getMessage());
 		}
 		return false;
 	}
@@ -220,7 +218,7 @@ public class Database {
 				return tables.next();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Message.error(e.getMessage());
 			return false;
 		}
 	}

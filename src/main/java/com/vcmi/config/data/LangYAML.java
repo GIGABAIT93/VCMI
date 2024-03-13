@@ -1,8 +1,8 @@
 package com.vcmi.config.data;
 
+import com.vcmi.Message;
 import com.vcmi.config.Config;
 import com.vcmi.VCMI;
-import com.vcmi.config.Lang;
 import org.simpleyaml.configuration.file.YamlConfiguration;
 import org.simpleyaml.configuration.file.YamlFile;
 
@@ -93,7 +93,7 @@ public class LangYAML {
             yamlFile.save();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Message.error(e.getMessage());
         }
     }
 

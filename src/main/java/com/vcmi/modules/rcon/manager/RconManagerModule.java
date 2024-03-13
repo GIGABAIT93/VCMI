@@ -45,9 +45,7 @@ public class RconManagerModule extends YamlConfiguration {
 
 	public static ArrayList<String> getCommandArgs() {
 		ArrayList<String> args = new ArrayList<>();
-		config.getList("tab-complete-list").forEach(arg -> {
-			args.add((String) arg);
-		});
+		config.getList("tab-complete-list").forEach(arg -> args.add((String) arg));
 		return args;
 	}
 

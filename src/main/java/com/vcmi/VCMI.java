@@ -18,6 +18,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
+
 import java.nio.file.Path;
 
 @Plugin(
@@ -25,7 +26,7 @@ import java.nio.file.Path;
         name = "VCMI",
         version = "1.0.0",
         description = "VCMI - Velocity Content Manager Plugin",
-        authors = { "GIGABAIT" }
+        authors = {"GIGABAIT"}
 )
 
 public class VCMI {
@@ -50,7 +51,9 @@ public class VCMI {
 
 
     @Subscribe
-    public void onPlayerJoin(PostLoginEvent event) {EventManager.onPlayerJoin(event);}
+    public void onPlayerJoin(PostLoginEvent event) {
+        EventManager.onPlayerJoin(event);
+    }
 
     @Subscribe
     public void onPlayerLeave(DisconnectEvent event) {
@@ -72,7 +75,12 @@ public class VCMI {
     public void onEnable(ProxyInitializeEvent event) {
         loadPlugin();
         Message.logHeader();
-        EventManager.onServerRunning(event);
+        try {
+            EventManager.onServerRunning(event);
+        } catch (Exception e) {
+            // continue
+        }
+
     }
 
     @Subscribe

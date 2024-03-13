@@ -1,0 +1,57 @@
+# UK localization file
+
+prefix: '&f[&3VCMI&f] &7'
+no_perms: '&cВи не маєте дозволу на використання цієї команди'
+unknown_error: '&cНевідома помилка'
+unknown_request: '&cНевідомий запит'
+error_executing: '&cПомилка виконання:'
+no_command: '&cТакої команди немає'
+reload: '&aУсі конфігурації перезавантажено'
+# Rcon Manager
+rcon_manager_reload: '&aКонфігурації Rcon Manager перезавантажено'
+rcon_auth_error: '&6{server}: &cПомилка аутентифікації. Будь ласка, перевірте конфігурацію
+  вашого сервера і переконайтеся, що сервер доступний'
+rcon_io_error: '&6{server}: &cПомилка IO. Перевірте конфігурацію свого сервера та
+  переконайтеся, що сервер доступний'
+rcon_unknown_error: '&6{server}: &cНевідома помилка хоста. Перевірте IP-адресу сервера
+  конфігурація адреси'
+# Rcon Server
+rcon_server_reload: '&aКонфігурації Rcon Server перезавантажено'
+rcon_connect_notify: '&aЗєднання Rcon з: &7[&3&l{address}&7] &aКоманда: &3&l{command}'
+rcon_usage: '&6Використання: rcon [server/all/reload] [command]'
+rcon_response: '&6{server}: &a{response}'
+rcon_response_empty: Немає відповіді від сервера
+# Bash Module
+bash_usage: '&6Використання: bash [script/reload] [info/(script args)]'
+bash_runner_reload: '&aКонфігурації BASH Runner перезавантажено'
+bash_out_script: '{response}'
+# Php Module
+php_usage: '&6Використання: php [script/reload] [info/(script args)]'
+php_runner_reload: '&aКонфігурації PHP Runner перезавантажено'
+php_out_script: '{response}'
+rcon_empty_command: '&6Команда порожня!'
+rcon_invalid_command_or_server: '&6Недійсна команда або ім`я сервера'
+# PlayerTime Module
+player_time_usage: '&6Використання: vptime [Player]'
+player_time: '&aВаш ігровий час: {time}'
+player_time_other: '&aЧас гри {player}: {time}'
+player_not_found: '&c{player} не знайдено'
+player_time_days: ' дн '
+player_time_hours: ' год '
+player_time_minutes: ' хв '
+player_time_seconds: ' сек '
+# Modules
+modules: '{module} {status}'
+# Help
+help: |-
+  &6Доступні команди:
+  &6/vcmi &7- &6Показати допомогу.
+  &6/vcmireload &7- &6Перезавантажте всі конфігурації.
+  &6/vcmimodules &7- &6Показати всі модулі.
+  &6/vptime &7- &6Повертає ваш загальний час гри.
+  &6/vptime [player] &7- &6Повертає загальний час гри вказаного гравця.
+  &6/rcon [server/all/reload] [command] &7- &6Надсилає вказану команду на вказаний сервер або на всі сервери.
+  &6/php [script/reload] [args] &7- &6Виконує вказаний скрипт PHP.
+  &6/bash [script/reload] [args] &7- &6Виконує вказаний сценарій Bash.
+  &6/rules &7- &6Читає вказаний текстовий файл.
+  &6/readme &7- &6Читає вказаний текстовий файл.

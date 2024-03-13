@@ -33,7 +33,7 @@ public final class TextReaderCommand implements SimpleCommand {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Message.error(e.getMessage());
             Message.error("An error occurred while reading the text file!");
         }
     }

@@ -1,5 +1,6 @@
 package com.vcmi.config.data;
 
+import com.vcmi.Message;
 import com.vcmi.VCMI;
 import org.simpleyaml.configuration.file.YamlConfiguration;
 import org.simpleyaml.configuration.file.YamlFile;
@@ -67,7 +68,7 @@ public class EventsYAML {
             yamlFile.save();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Message.error(e.getMessage());
         }
     }
 

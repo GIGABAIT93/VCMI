@@ -1,5 +1,6 @@
 package com.vcmi.modules.event;
 
+import com.vcmi.Message;
 import com.vcmi.config.Config;
 import com.vcmi.Util;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
@@ -53,7 +54,7 @@ public class EventManager {
                     try {
                         TimeUnit.SECONDS.sleep(Integer.parseInt(command.replace(DELAY, "").trim()));
                     } catch (InterruptedException e1) {
-                        e1.printStackTrace();
+                        Message.error(e1.getMessage());
                     }
                     continue;
                 }
@@ -71,8 +72,8 @@ public class EventManager {
             if (command.contains(DELAY)) {
                 try {
                     TimeUnit.SECONDS.sleep(Integer.parseInt(command.replace(DELAY, "").trim()));
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
+                } catch (InterruptedException e) {
+                    Message.error(e.getMessage());
                 }
                 continue;
             }

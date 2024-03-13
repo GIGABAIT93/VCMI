@@ -1,5 +1,6 @@
 package com.vcmi.modules.playertime;
 
+import com.vcmi.Message;
 import com.vcmi.config.Database;
 
 import java.sql.ResultSet;
@@ -47,7 +48,7 @@ public class PlayerTimeTracker {
         try {
             return getCurrentPlayerTime(playerId);
         } catch (Exception e) {
-            e.printStackTrace();
+            Message.error(e.getMessage());
         }
         return 0;
     }
@@ -59,7 +60,7 @@ public class PlayerTimeTracker {
                 return rs.getLong("play_time");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Message.error(e.getMessage());
         }
         return 0;
     }

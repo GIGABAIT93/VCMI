@@ -12,19 +12,12 @@ public class Message {
     private static final String errorSuffix = "<yellow>[ERROR] <dark_red>";
 
     public static Component convert(String message) {
-
         if (message.contains("<") && message.contains(">")) {
             return MiniMessage.miniMessage().deserialize(message);
         } else {
-            return LegacyComponentSerializer.legacyAmpersand().deserialize(message);
+            return LegacyComponentSerializer.legacyAmpersand().deserialize(message.replace("§", "&"));
         }
     }
-
-    public static String convertLegacyToMiniMessage(String legacyMessage) {
-        Component legacyComponent = LegacyComponentSerializer.legacyAmpersand().deserialize(legacyMessage);
-        return MiniMessage.miniMessage().serialize(legacyComponent);
-    }
-
 
     private static void sendMessageWithPrefix(String prefix, String message) {
         message = prefix + message;

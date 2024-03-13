@@ -22,7 +22,7 @@ public class PhpModule {
 	}
 
 	public static void enable() {
-		Util.registerCommand("php", "vuphp", new PHPCommand());
+		Util.registerCommand("php", "vphp", new PHPCommand());
 		Util.createDir(VCMI.pluginPath.toString() + File.separator + "php");
 		load();
 	}

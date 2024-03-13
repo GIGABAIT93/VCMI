@@ -115,7 +115,7 @@ public class RconManagerCommand implements SimpleCommand {
 			Rcon rcon = new Rcon(RconManagerModule.getIP(server), RconManagerModule.getPort(server),
 					RconManagerModule.getPass(server).getBytes());
 			String result = rcon.command(command.trim());
-			if (result.length() == 0) {
+			if (result.isEmpty()) {
 				result = Lang.rcon_response_empty.getClean();
 			}
 			sendMessage(sender, Lang.rcon_response.replace("{server}", Util.capitalize(server), "{response}", result));
