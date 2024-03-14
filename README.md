@@ -118,20 +118,20 @@ Reads and outputs the contents of text files located in the "text" folder to pla
 Performs HTTP requests to specified URLs, supporting both GET and POST requests. Configuration files are used to manage request parameters. Allows you to execute commands depending on the HTTP request response. Each individual configuration file corresponds to a single request.
 ```yaml
 # The URL of the API to be queried.
-url: "https://domain.com/api/minecraft/link"
+# Available placeholders: %player_name%, %player_uuid%, %player_ip%, %server%, %arg1%, %arg2%, %arg[n]%
+url: "https://api.mojang.com/users/profiles/minecraft/%player_name%"
 
 # HTTP request method. Can be "GET" or "POST".
 method: "GET"
 
 # Query parameters. They will be sent to the API with the request. If the parameters are not used, this field can be deleted.
 # You can use placeholders that will be automatically replaced with the appropriate values when the query is executed.
-# Available placeholders: %player_name%, %player_uuid%, %server%, %arg1%, %arg2%, %arg[n]%
+# Available placeholders: %player_name%, %player_uuid%, %player_ip%, %server%, %arg1%, %arg2%, %arg[n]%
 parameters:
-  api_key: "******************************"
-  player_name: "%player_name%"
-  player_uuid: "%player_uuid%"
+  secret: "lmksfdjlfjsffsdfjkljklgjkljsieiweiefdls"
+  player: "%player_name%"
   server: "%server%"
-  code: "%arg1%"
+  user_code: "%arg1%"
 
 # Commands that cause the request to be executed. When one of these commands is entered, a request to the API will be executed.
 triggers:
@@ -148,12 +148,15 @@ permission: "account.link"
 response:
   # Reply with successful status (200)
   success:
-    - "m %player_name% %response%"
+    - "alert Player %player_name% is uuid %id%"
+    - "Player %player_name% has successfully linked his account to the site %json_resp_key_1%"
+    - "msg %player_name% You have successfully linked your account to site. %json_resp_key_2%"
   # Response in case of failed status (not 200)
   failure:
-    - "m %player_name% %response%"
+    - "msg %player_name% It was not possible to link the account to the site."
 
-debug: false
+# If this option is enabled, all response options from the api/site will be sent to the sender
+debug: true
 ```
 
 ### EventsManager:

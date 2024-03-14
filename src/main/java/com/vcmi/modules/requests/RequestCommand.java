@@ -45,11 +45,8 @@ public class RequestCommand implements SimpleCommand {
 				config.getConfigurationSection("parameters").getMapValues(true),
 				params
 		);
-		HttpRequest req = new HttpRequest(
-				config.getString("url"), config.getString("method"),
-				parameters
-		);
-
+		String url = parsePlaceholder(config.getString("url"), params);
+		HttpRequest req = new HttpRequest(url, config.getString("method"), parameters);
 		JsonElement resp = req.send();
 
 
@@ -93,6 +90,13 @@ public class RequestCommand implements SimpleCommand {
 		}
 	}
 
+	/**
+	 * This method prepares the placeholders for the command.
+	 * It collects the necessary information from the command sender and arguments.
+	 * @param args The command arguments.
+	 * @param sender The command sender.
+	 * @return A map of placeholders and their corresponding values.
+	 */
 	private Map<String, String> placeholderPrepare(String[] args, CommandSource sender) {
 		Map<String, String> params = new HashMap<>();
 		if (sender instanceof Player) {
@@ -115,6 +119,13 @@ public class RequestCommand implements SimpleCommand {
 		return params;
 	}
 
+	/**
+	 * This method parses the placeholders in a map.
+	 * It replaces each placeholder in the map values with its corresponding value from the params map.
+	 * @param map The map containing the placeholders.
+	 * @param params The map containing the placeholder values.
+	 * @return A map with the parsed placeholders.
+	 */
 	private Map<String, String> parsePlaceholders(Map<String, Object> map, Map<String, String> params) {
 		Map<String, String> stringMap = new HashMap<>();
 		for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -127,6 +138,34 @@ public class RequestCommand implements SimpleCommand {
 		return stringMap;
 	}
 
+	/**
+	 * This method parses a single placeholder in a text.
+	 * It replaces the placeholder in the text with its corresponding value from the params map.
+	 * @param text The text containing the placeholder.
+	 * @param params The map containing the placeholder values.
+	 * @return The text with the parsed placeholder.
+	 */
+	private String parsePlaceholder(String text, Map<String, String> params) {
+		if (text == null || params == null) {
+			return text;
+		}
+		String parsedText = text;
+		for (Map.Entry<String, String> param : params.entrySet()) {
+			if (param.getKey() == null || param.getValue() == null) {
+				continue;
+			}
+			parsedText = parsedText.replace("%" + param.getKey() + "%", param.getValue());
+		}
+		return parsedText;
+	}
+
+	/**
+	 * This method parses the placeholders in a list.
+	 * It replaces each placeholder in the list items with its corresponding value from the params map.
+	 * @param list The list containing the placeholders.
+	 * @param params The map containing the placeholder values.
+	 * @return A list with the parsed placeholders.
+	 */
 	private List<String> parsePlaceholdersInList(List<String> list, Map<String, String> params) {
 		if (list == null || params == null) {
 			return Collections.emptyList();

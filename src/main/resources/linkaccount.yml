@@ -1,8 +1,9 @@
 # The URL of the API to be queried.
-url: "http://example.com/api"
+# Available placeholders: %player_name%, %player_uuid%, %player_ip%, %server%, %arg1%, %arg2%, %arg[n]%
+url: "https://api.mojang.com/users/profiles/minecraft/%player_name%"
 
 # HTTP request method. Can be "GET" or "POST".
-method: "POST"
+method: "GET"
 
 # Query parameters. They will be sent to the API with the request. If the parameters are not used, this field can be deleted.
 # You can use placeholders that will be automatically replaced with the appropriate values when the query is executed.
@@ -28,11 +29,12 @@ permission: "account.link"
 response:
   # Reply with successful status (200)
   success:
-    - "alert Player %player_name% has successfully linked his account to the site %json_resp_key_1%"
+    - "alert Player %player_name% is uuid %id%"
+    - "Player %player_name% has successfully linked his account to the site %json_resp_key_1%"
     - "msg %player_name% You have successfully linked your account to site. %json_resp_key_2%"
   # Response in case of failed status (not 200)
   failure:
     - "msg %player_name% It was not possible to link the account to the site."
 
 # If this option is enabled, all response options from the api/site will be sent to the sender
-debug: false
+debug: true
