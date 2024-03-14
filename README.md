@@ -2,6 +2,11 @@
 # VCMI Plugin
 
 VCMI Velocity Plugin - This one offers a variety of modules for detailed server management and monitoring. Each module can be turned on or off as needed. The plugin is designed to be as flexible as possible, allowing you to customize your server's functionality to your specific needs.
+## Commands
+- `/vcmi`: Help command to display all available commands.
+- `/vcmireload`: Reloads the plugin configuration file.
+- `/vcmimodules`: Displays a list of all available modules.
+- `/vpl -v`: Display plugin list.
 
 ## Modules
 ### PlayerTime:

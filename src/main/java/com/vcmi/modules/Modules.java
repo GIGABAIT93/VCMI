@@ -2,6 +2,7 @@ package com.vcmi.modules;
 
 import com.vcmi.commands.HelpCommand;
 import com.vcmi.commands.ModulesCommand;
+import com.vcmi.commands.PluginsCommand;
 import com.vcmi.config.Config;
 import com.vcmi.Message;
 import com.vcmi.Util;
@@ -14,7 +15,6 @@ import com.vcmi.modules.rcon.manager.RconManagerModule;
 import com.vcmi.modules.rcon.server.RconServerModule;
 import com.vcmi.modules.requests.RequestsModule;
 import com.vcmi.modules.text.TextReaderModule;
-
 import java.util.Map;
 
 public class Modules {
@@ -30,13 +30,11 @@ public class Modules {
     );
 
     public Modules() {
-        Util.registerCommand("vcmireload", "vreload", new ReloadCommand());
-        Util.registerCommand("vcmi", "vcmihelp", new HelpCommand());
-        Util.registerCommand("vcmimodules", "vmodules", new ModulesCommand());
         Message.info("...");
         Message.info("VCMI loading modules...");
         Config.databaseInitializer();
         Config.getModules().forEach(this::loadModules);
+        registerCommands();
     }
 
     public static void load() {
@@ -49,6 +47,13 @@ public class Modules {
         } else {
             MODULES.get(module).disableIfEnabled();
         }
+    }
+
+    private void registerCommands() {
+        Util.registerCommand("vcmireload", "vreload", new ReloadCommand());
+        Util.registerCommand("vcmi", "vcmihelp", new HelpCommand());
+        Util.registerCommand("vcmimodules", "vmodules", new ModulesCommand());
+        Util.registerCommand("vpl", "vplugins", new PluginsCommand());
     }
 
     private static class ModuleConfig {

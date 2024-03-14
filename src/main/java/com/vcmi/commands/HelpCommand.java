@@ -13,9 +13,7 @@ public class HelpCommand implements SimpleCommand {
             source.sendMessage(Lang.no_perms.get());
             return;
         }
-
         source.sendMessage(Lang.help.get());
-
     }
 
     @Override

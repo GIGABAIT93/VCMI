@@ -82,6 +82,7 @@ public class LangYAML {
                     + "\n&6/vcmi &7- &6Show help."
                     + "\n&6/vcmireload &7- &6Reload all configurations."
                     + "\n&6/vcmimodules &7- &6Show all modules."
+                    + "\n&6/vpl &7- &6Show all plugins."
                     + "\n&6/vptime &7- &6Returns your total playing time."
                     + "\n&6/vptime [player] &7- &6Returns the specified player's total playing time."
                     + "\n&6/rcon [server/all/reload] [command] &7- &6Sends the specified command to the specified server or all servers."
