@@ -8,6 +8,7 @@ VCMI Velocity Plugin - This one offers a variety of modules for detailed server 
 Tracks the total playing time of each player on the server, providing the ability to view the time played by a specific player or the entire server.
 - `/vptime`: Returns the player's total playing time.
 - `/vptime <player>`: Returns the specified player's total playing time.
+- `/vptop:` Returns the top 10 players with the most playing time.
 
 ### RconManager:
 Enables execution of RCON commands on remote servers, utilizing a configuration file for server data storage.

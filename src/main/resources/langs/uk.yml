@@ -7,6 +7,9 @@ unknown_request: '&cНевідомий запит'
 error_executing: '&cПомилка виконання:'
 no_command: '&cТакої команди немає'
 reload: '&aУсі конфігурації перезавантажено'
+enabled: '&aувімкнено'
+disabled: '&cвимкнено'
+module_status: '&b{module} {status}'
 # Rcon Manager
 rcon_manager_reload: '&aКонфігурації Rcon Manager перезавантажено'
 rcon_auth_error: '&6{server}: &cПомилка аутентифікації. Будь ласка, перевірте конфігурацію
@@ -40,8 +43,8 @@ player_time_days: ' дн '
 player_time_hours: ' год '
 player_time_minutes: ' хв '
 player_time_seconds: ' сек '
-# Modules
-modules: '{module} {status}'
+player_time_top: '&aКращі гравці за часом:'
+player_time_top_entry: '&a{position}. &6{player} - &a{time}'
 # Help
 help: |-
   &6Доступні команди:

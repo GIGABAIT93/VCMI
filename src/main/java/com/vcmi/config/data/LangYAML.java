@@ -36,6 +36,9 @@ public class LangYAML {
             setConfigValue("error_executing", "&cError executing:");
             setConfigValue("no_command", "&cNo such command");
             setConfigValue("reload", "&aAll configurations reloaded");
+            setConfigValue("enabled", "&aenabled");
+            setConfigValue("disabled", "&cdisabled");
+            setConfigValue("module_status", "&b{module} &6is {status}");
 
             yamlFile.setComment("rcon_manager_reload", "Rcon Manager");
             setConfigValue("rcon_manager_reload", "&aConfigurations Rcon Manager reloaded");
@@ -71,9 +74,8 @@ public class LangYAML {
             setConfigValue("player_time_hours", " hours ");
             setConfigValue("player_time_minutes", " minutes ");
             setConfigValue("player_time_seconds", " seconds ");
-
-            yamlFile.setComment("modules", "Modules");
-            setConfigValue("modules", "{module} is {status}");
+            setConfigValue("player_time_top", "&aTop players by time:");
+            setConfigValue("player_time_top_entry", "&a{position}. &6{player} - {time}");
 
             yamlFile.setComment("help", "Help");
             setConfigValue("help", "&6Available commands:"

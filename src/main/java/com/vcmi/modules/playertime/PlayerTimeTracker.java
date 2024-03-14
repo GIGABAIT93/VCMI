@@ -1,12 +1,10 @@
 package com.vcmi.modules.playertime;
-
-import com.vcmi.Message;
 import com.vcmi.config.Database;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public class PlayerTimeTracker {
     private final HashMap<UUID, Long> playerOnlineTime;
@@ -44,33 +42,17 @@ public class PlayerTimeTracker {
         database.updateAsync("player_times", "play_time = play_time + ?", "uuid = ?", timeOnline, playerId.toString());
     }
 
-    public long getOnlineTime(UUID playerId) {
-        try {
-            return getCurrentPlayerTime(playerId);
-        } catch (Exception e) {
-            Message.error(e.getMessage());
-        }
-        return 0;
+    public CompletableFuture<ResultSet> getPlayerTimeByName(String playerName) {
+        return database.selectAsync("player_times", "play_time", "name = ?", playerName);
     }
 
-    public long getPlayerTimeByName(String playerName) {
-        try {
-            ResultSet rs = database.select("player_times", "play_time", "name = ?", playerName);
-            if (rs.next()) {
-                return rs.getLong("play_time");
-            }
-        } catch (SQLException e) {
-            Message.error(e.getMessage());
-        }
-        return 0;
+    public CompletableFuture<ResultSet> getCurrentPlayerTime(UUID playerId) throws SQLException {
+        return database.selectAsync("player_times", "play_time", "uuid = ?", playerId.toString());
     }
 
-    private long getCurrentPlayerTime(UUID playerId) throws SQLException {
-        ResultSet rs = database.select("player_times", "play_time", "uuid = ?", playerId.toString());
-        if (rs.next()) {
-            return rs.getLong("play_time");
-        }
-        return 0;
+    public CompletableFuture<ResultSet> getTopPlayers(int limit) {
+        String query = String.format("play_time > 0 ORDER BY play_time DESC LIMIT %d", limit);
+        return database.selectAsync("player_times", "name, play_time", query);
     }
 
     public void updateAllOnlineTimes() {

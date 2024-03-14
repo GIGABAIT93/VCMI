@@ -47,20 +47,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
                 <resources>
                     <resource>
@@ -160,19 +146,12 @@
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>mariadb.properties</exclude>
-                                        <exclude>deprecated.properties</exclude>
-                                        <exclude>driver.properties</exclude>
-                                    </excludes>
                                 </filter>
                             </filters>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
-
         </plugins>
     </build>
 
@@ -207,17 +186,17 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-buffer</artifactId>
-            <version>4.1.86.Final</version>
+            <version>4.1.106.Final</version>
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-transport</artifactId>
-            <version>4.1.86.Final</version>
+            <version>4.1.106.Final</version>
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-codec</artifactId>
-            <version>4.1.86.Final</version>
+            <version>4.1.106.Final</version>
         </dependency>
         <dependency>
             <groupId>com.github.Carleslc.Simple-YAML</groupId>
@@ -227,7 +206,7 @@
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
-            <version>3.1.4</version>
+            <version>3.3.1</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

@@ -1,7 +1,6 @@
 package com.vcmi.config;
 
 import com.vcmi.Message;
-
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;

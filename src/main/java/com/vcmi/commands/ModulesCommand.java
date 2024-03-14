@@ -4,8 +4,6 @@ import com.vcmi.config.Lang;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.vcmi.config.Config;
-import net.kyori.adventure.text.Component;
-
 import java.util.List;
 
 public class ModulesCommand implements SimpleCommand {
@@ -18,12 +16,10 @@ public class ModulesCommand implements SimpleCommand {
         }
 
         List<String> allModules = Config.getModules();
-
         allModules.forEach(module -> {
             String moduleName = capitalizeWords(module.toUpperCase().replace('-', ' '));
-            // If enable green else red
-            Component message = Config.getModules(module) ? Lang.modules.replace("{module}", moduleName, "{status}", "&aenabled") : Lang.modules.replace("{module}", moduleName, "{status}", "&cdisabled");
-            source.sendMessage(message);
+            String status = Config.getModules(module) ? Lang.enabled.getClean() : Lang.disabled.getClean();
+            source.sendMessage(Lang.module_status.replace("{module}", moduleName, "{status}", status));
         });
     }
 
