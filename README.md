@@ -7,6 +7,7 @@ VCMI Velocity Plugin - This one offers a variety of modules for detailed server 
 - `/vcmireload`: Reloads the plugin configuration file.
 - `/vcmimodules`: Displays a list of all available modules.
 - `/vpl -v`: Display plugin list.
+- `/psend <player/all> <server>`: Sends the specified player to the specified server.
 
 ## Modules
 ### PlayerTime:
@@ -202,4 +203,35 @@ events:
 
 ```
 
+### ChatManager:
+Provides the ability to manage chat messages.
+```yaml
+# Chat Manager 
+# Placeholders: {player}, {server}, {message}
+
+# Global chat
+global:
+  enabled: true
+  alias: '!'
+  command: g
+  permission: vcmi.chat.global
+  see_all: true
+  format: '&8[&6G&8] &a{player} &6=> &f{message}'
+# Staff chat
+staff:
+  enabled: true
+  alias: '@'
+  command: s
+  permission: vcmi.chat.staff
+  format: '&8&l[&4&lS&8&l] &b&l{server} &a&l{player} &6&l=> &f&l{message}'
+# Alert chat
+alert:
+  enabled: true
+  alias: ''
+  command: alert
+  # If empty, everyone can use this chat and see the messages
+  permission: vcmi.chat.alert
+  see_all: true
+  format: '&8[&4ALERT&8] &f{message}'
+```
 

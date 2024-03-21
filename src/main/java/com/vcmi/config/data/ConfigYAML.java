@@ -67,6 +67,9 @@ public class ConfigYAML {
         yamlFile.setComment("modules.text-reader", "Text Reader module. Allows reading and outputting text files and chat");
         setConfigValue("modules.text-reader", true);
 
+        yamlFile.setComment("modules.chat-manager", "Chat manager. Allows you to manage chat");
+        setConfigValue("modules.chat-manager", true);
+
 
     }
 

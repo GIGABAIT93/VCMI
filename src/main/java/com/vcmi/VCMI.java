@@ -5,12 +5,14 @@ import com.vcmi.config.Config;
 import com.vcmi.config.Database;
 import com.vcmi.config.Lang;
 import com.vcmi.modules.Modules;
+import com.vcmi.modules.chat.ChatEventListener;
 import com.vcmi.modules.event.EventManager;
 import com.vcmi.modules.rcon.server.RconServerModule;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
 import com.velocitypowered.api.event.connection.PostLoginEvent;
 import com.velocitypowered.api.event.player.KickedFromServerEvent;
+import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
@@ -68,6 +70,11 @@ public class VCMI {
     @Subscribe
     public void onServerSwitch(ServerConnectedEvent event) {
         EventManager.onServerSwitch(event);
+    }
+
+    @Subscribe
+    public void onPlayerMessage(PlayerChatEvent event) {
+        ChatEventListener.onPlayerMessage(event);
     }
 
 

@@ -77,6 +77,12 @@ public class LangYAML {
             setConfigValue("player_time_top", "&aTop players by time:");
             setConfigValue("player_time_top_entry", "&a{position}. &6{player} - {time}");
 
+            yamlFile.setComment("send_usage", "Send Module");
+            setConfigValue("send_usage", "&6Usage: /psend &6{player} {server}");
+            setConfigValue("send_success", "&aPlayer {player} sent to server {server}");
+            setConfigValue("server_not_found", "&cServer {server} not found");
+
+
             yamlFile.setComment("help", "Help");
             setConfigValue("help", "&6Available commands:"
                     + "\n&6/vcmi &7- &6Show help."
@@ -90,6 +96,7 @@ public class LangYAML {
                     + "\n&6/bash [script/reload] [args] &7- &6Executes the specified Bash script."
                     + "\n&6/rules &7- &6Reads the specified text file."
                     + "\n&6/readme &7- &6Reads the specified text file."
+                    + "\n&6/psend [player/all] [server]&7- &6Sends the specified player to the specified server."
             );
 
 

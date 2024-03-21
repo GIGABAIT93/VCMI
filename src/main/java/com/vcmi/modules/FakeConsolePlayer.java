@@ -131,7 +131,7 @@ public class FakeConsolePlayer implements Player {
 
     @Override
     public String getUsername() {
-        return null;
+        return "Console";
     }
 
     @Override

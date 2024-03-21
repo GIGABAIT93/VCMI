@@ -29,7 +29,10 @@ public class Util {
         CommandManager commandManager = server.getCommandManager();
         CommandMeta commandMeta = commandManager.metaBuilder(command).aliases(alias).plugin(server).build();
         commandManager.register(commandMeta, CommandClass);
-
+    }
+    
+    public static void unregisterCommand(String string) {
+        server.getCommandManager().unregister(string);
     }
 
     public static String capitalize(String text) {

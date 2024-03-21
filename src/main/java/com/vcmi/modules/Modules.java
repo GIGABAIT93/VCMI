@@ -1,13 +1,11 @@
 package com.vcmi.modules;
 
-import com.vcmi.commands.HelpCommand;
-import com.vcmi.commands.ModulesCommand;
-import com.vcmi.commands.PluginsCommand;
+import com.vcmi.commands.*;
 import com.vcmi.config.Config;
 import com.vcmi.Message;
 import com.vcmi.Util;
-import com.vcmi.commands.ReloadCommand;
 import com.vcmi.modules.bash.BashModule;
+import com.vcmi.modules.chat.ChatModule;
 import com.vcmi.modules.event.EventsModule;
 import com.vcmi.modules.php.PhpModule;
 import com.vcmi.modules.playertime.PlayerTimeModule;
@@ -26,7 +24,8 @@ public class Modules {
             "events-manager", new ModuleConfig(EventsModule::enable, EventsModule::disable),
             "request-module",  new ModuleConfig(RequestsModule::enable, RequestsModule::disable),
             "player-time",  new ModuleConfig(PlayerTimeModule::enable, PlayerTimeModule::disable),
-            "text-reader",  new ModuleConfig(TextReaderModule::enable, TextReaderModule::disable)
+            "text-reader",  new ModuleConfig(TextReaderModule::enable, TextReaderModule::disable),
+            "chat-manager",  new ModuleConfig(ChatModule::enable, ChatModule::disable)
     );
 
     public Modules() {
@@ -54,6 +53,7 @@ public class Modules {
         Util.registerCommand("vcmi", "vcmihelp", new HelpCommand());
         Util.registerCommand("vcmimodules", "vmodules", new ModulesCommand());
         Util.registerCommand("vpl", "vplugins", new PluginsCommand());
+        Util.registerCommand("psend", "vpsend", new PlayerSendCommand());
     }
 
     private static class ModuleConfig {
