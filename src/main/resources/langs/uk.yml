@@ -45,6 +45,10 @@ player_time_minutes: ' хв '
 player_time_seconds: ' сек '
 player_time_top: '&aКращі гравці за часом:'
 player_time_top_entry: '&a{position}. &6{player} - &a{time}'
+# Send Module
+send_usage: '&6Використання: /psend &6{player} {server}'
+send_success: '&aГравець {player} надіслано на сервер {server}'
+server_not_found: '&cСервер {server} не знайдено'
 # Help
 help: |-
   &6Доступні команди:
@@ -59,3 +63,4 @@ help: |-
   &6/bash [script/reload] [args] &7- &6Виконує вказаний сценарій Bash.
   &6/rules &7- &6Читає вказаний текстовий файл.
   &6/readme &7- &6Читає вказаний текстовий файл.
+
