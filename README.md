@@ -214,6 +214,7 @@ global:
   enabled: true
   alias: '!'
   command: g
+  # If empty, everyone can use this chat and see the messages
   permission: vcmi.chat.global
   see_all: true
   format: '&8[&6G&8] &a{player} &6=> &f{message}'
@@ -223,13 +224,13 @@ staff:
   alias: '@'
   command: s
   permission: vcmi.chat.staff
+  see_all: false
   format: '&8&l[&4&lS&8&l] &b&l{server} &a&l{player} &6&l=> &f&l{message}'
 # Alert chat
 alert:
   enabled: true
   alias: ''
   command: alert
-  # If empty, everyone can use this chat and see the messages
   permission: vcmi.chat.alert
   see_all: true
   format: '&8[&4ALERT&8] &f{message}'

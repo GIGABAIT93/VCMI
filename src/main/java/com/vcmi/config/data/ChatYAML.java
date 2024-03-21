@@ -31,7 +31,8 @@ public class ChatYAML {
             setConfigValue("global.enabled", true);
             setConfigValue("global.alias", "!");
             setConfigValue("global.command", "g");
-            setConfigValue("global.permission", "vcmi.chat.global");
+            yamlFile.setComment("global.permission", "If empty, everyone can use this chat and see the messages");
+            setConfigValue("global.permission", "");
             setConfigValue("global.see_all", true);
             setConfigValue("global.format", "&8[&6G&8] &a{player} &6=> &f{message}");
 
@@ -40,14 +41,13 @@ public class ChatYAML {
             setConfigValue("staff.alias", "@");
             setConfigValue("staff.command", "s");
             setConfigValue("staff.permission", "vcmi.chat.staff");
-            setConfigValue("global.see_all", false);
+            setConfigValue("staff.see_all", false);
             setConfigValue("staff.format", "&8&l[&4&lS&8&l] &b&l{server} &a&l{player} &6&l=> &f&l{message}");
 
             yamlFile.setComment("alert", "Alert chat");
             setConfigValue("alert.enabled", true);
             setConfigValue("alert.alias", "");
             setConfigValue("alert.command", "alert");
-            yamlFile.setComment("alert.permission", "If empty, everyone can use this chat and see the messages");
             setConfigValue("alert.permission", "");
             setConfigValue("alert.see_all", true);
             setConfigValue("alert.format", "&8[&4ALERT&8] &f{message}");
