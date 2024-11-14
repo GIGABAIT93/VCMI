@@ -27,7 +27,10 @@ public class Util {
 
     public static void registerCommand(String command, String alias, SimpleCommand CommandClass) {
         CommandManager commandManager = server.getCommandManager();
-        CommandMeta commandMeta = commandManager.metaBuilder(command).aliases(alias).plugin(server).build();
+        CommandMeta commandMeta = commandManager.metaBuilder(command)
+                .aliases(alias)
+                .plugin(VCMI.pluginContainer)
+                .build();
         commandManager.register(commandMeta, CommandClass);
     }
     

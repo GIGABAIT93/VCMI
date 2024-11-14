@@ -34,15 +34,14 @@ import java.nio.file.Path;
 public class VCMI {
 
     public static ProxyServer server;
-    public static PluginContainer pluginContainer;
     public static Path pluginPath;
+    public static PluginContainer pluginContainer;
     public static Database database;
 
     @Inject
-    public VCMI(ProxyServer server, PluginContainer container, @DataDirectory Path dataDirectory) {
+    public VCMI(ProxyServer server, @DataDirectory Path dataDirectory) {
         VCMI.server = server;
-        VCMI.pluginContainer = container;
-        pluginPath = dataDirectory;
+        VCMI.pluginPath = dataDirectory;
     }
 
     public static void loadPlugin() {
@@ -80,6 +79,7 @@ public class VCMI {
 
     @Subscribe
     public void onEnable(ProxyInitializeEvent event) {
+        VCMI.pluginContainer = server.getPluginManager().fromInstance(this).orElseThrow(() -> new IllegalStateException("Plugin not found in PluginManager"));
         loadPlugin();
         Message.logHeader();
         try {
@@ -87,7 +87,6 @@ public class VCMI {
         } catch (Exception e) {
             // continue
         }
-
     }
 
     @Subscribe

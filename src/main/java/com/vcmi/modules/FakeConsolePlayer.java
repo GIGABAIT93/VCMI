@@ -8,13 +8,16 @@ import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.proxy.messages.ChannelIdentifier;
+import com.velocitypowered.api.proxy.messages.PluginMessageEncoder;
 import com.velocitypowered.api.proxy.player.PlayerSettings;
 import com.velocitypowered.api.proxy.player.ResourcePackInfo;
 import com.velocitypowered.api.proxy.player.TabList;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.util.GameProfile;
 import com.velocitypowered.api.util.ModInfo;
+import com.velocitypowered.api.util.ServerLink;
 import net.kyori.adventure.identity.Identity;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -34,10 +37,6 @@ public class FakeConsolePlayer implements Player {
         return profile;
     }
 
-    @Override
-    public void clearHeaderAndFooter() {
-
-    }
 
     @Override
     public void clearPlayerListHeaderAndFooter() {
@@ -105,7 +104,12 @@ public class FakeConsolePlayer implements Player {
     }
 
     @Override
-    public boolean sendPluginMessage(ChannelIdentifier channelIdentifier, byte[] bytes) {
+    public boolean sendPluginMessage(@NotNull ChannelIdentifier channelIdentifier, byte[] bytes) {
+        return false;
+    }
+
+    @Override
+    public boolean sendPluginMessage(@NotNull ChannelIdentifier identifier, @NotNull PluginMessageEncoder dataEncoder) {
         return false;
     }
 
@@ -126,6 +130,26 @@ public class FakeConsolePlayer implements Player {
 
     @Override
     public void setCustomChatCompletions(@NotNull Collection<String> collection) {
+
+    }
+
+    @Override
+    public void transferToHost(@NotNull InetSocketAddress address) {
+
+    }
+
+    @Override
+    public void storeCookie(Key key, byte[] data) {
+
+    }
+
+    @Override
+    public void requestCookie(Key key) {
+
+    }
+
+    @Override
+    public void setServerLinks(@NotNull List<ServerLink> links) {
 
     }
 
@@ -206,6 +230,11 @@ public class FakeConsolePlayer implements Player {
 
     @Override
     public Optional<InetSocketAddress> getVirtualHost() {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<String> getRawVirtualHost() {
         return Optional.empty();
     }
 
