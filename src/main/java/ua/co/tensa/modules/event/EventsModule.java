@@ -45,6 +45,7 @@ public class EventsModule extends YamlConfiguration {
 			return config != null && config.getBoolean("events." + this.key + ".enabled");
 		}
 
+		@SuppressWarnings("rawtypes")
 		public List commands() {
 			ConfigurationSection section = config != null ? config.getConfigurationSection("events") : null;
 			return section != null ? section.getList(this.key + ".commands") : Collections.emptyList();
