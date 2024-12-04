@@ -14,7 +14,7 @@ public class RconManagerModule extends YamlConfiguration {
 	private static YamlConfiguration config;
 
 	public static void initialise() {
-		config = RconManagerYAML.getReloadedFile();
+		config = RconManagerYAML.getInstance().getReloadedFile();
 	}
 
 	public static void reload() {

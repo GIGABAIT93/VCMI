@@ -50,7 +50,7 @@ public enum Lang {
 
 
 		public static void initialise() {
-			config = LangYAML.getReloadedFile();
+			config = LangYAML.getInstance().getReloadedFile();
 			prefix = Lang.prefix.getClean();
 		}
 

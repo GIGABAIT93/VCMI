@@ -13,7 +13,7 @@ public class Config extends YamlConfiguration {
 	public static DatabaseInitializer databaseInitializer;
 
 	public static void initialise() {
-		config = ConfigYAML.getReloadedFile();
+		config = ConfigYAML.getInstance().getReloadedFile();
 	}
 
 	public static void reload() {

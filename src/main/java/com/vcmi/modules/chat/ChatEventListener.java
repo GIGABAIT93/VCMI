@@ -10,13 +10,13 @@ import java.util.Set;
 
 public class ChatEventListener {
     private static boolean chatEnabled = Config.getModules("chat-manager");
-    private static YamlConfiguration chatConfig = ChatYAML.getConfig();
+    private static YamlConfiguration chatConfig = ChatYAML.getInstance().getConfig();
 
 
     public static void reload() {
         chatEnabled = Config.getModules("chat-manager");
         if (chatEnabled) {
-            chatConfig = ChatYAML.getReloadedFile();
+            chatConfig = ChatYAML.getInstance().getReloadedFile();
         }
     }
 

@@ -20,7 +20,7 @@ public class RconServerModule extends YamlConfiguration {
 	private static YamlConfiguration config;
 
 	public static void initialise() {
-		config = RconServerYAML.getReloadedFile();
+		config = RconServerYAML.getInstance().getReloadedFile();
 	}
 
 	public static void reload() {

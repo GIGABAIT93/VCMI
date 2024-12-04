@@ -13,7 +13,7 @@ public class EventsModule extends YamlConfiguration {
 	private static YamlConfiguration config;
 
 	public static void initialise() {
-		config = EventsYAML.getReloadedFile();
+		config = EventsYAML.getInstance().getReloadedFile();
 	}
 
 	public static void reload() {

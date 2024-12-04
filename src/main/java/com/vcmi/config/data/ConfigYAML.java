@@ -1,46 +1,34 @@
 package com.vcmi.config.data;
 
-import com.vcmi.Message;
-import com.vcmi.VCMI;
-import org.simpleyaml.configuration.file.YamlConfiguration;
-import org.simpleyaml.configuration.file.YamlFile;
-import java.io.File;
-import java.io.IOException;
+public class ConfigYAML extends BaseYAMLConfig {
 
-public class ConfigYAML {
-    private static final String FILE_PATH = VCMI.pluginPath + File.separator + "config.yml";
-    private static YamlFile yamlFile;
+    private static ConfigYAML instance;
 
     private ConfigYAML() {
-        throw new IllegalStateException("Utility class");
+        super("config.yml");
     }
 
-    public static void reload() {
-        try {
-            yamlFile = new YamlFile(FILE_PATH);
-            if (!yamlFile.exists()) {
-                yamlFile.createNewFile(true);
-            }
-            yamlFile.load();
-            populateConfigFile();
-            yamlFile.save();
-        } catch (IOException e) {
-            Message.error(e.getMessage());
+    public static ConfigYAML getInstance() {
+        if (instance == null) {
+            instance = new ConfigYAML();
         }
+        return instance;
     }
 
-    private static void populateConfigFile() {
+    @Override
+    protected void populateConfigFile() {
         yamlFile.setHeader("General Configuration File");
 
         setConfigValue("language", "en");
 
         yamlFile.setComment("use_uuid", "Use UUID to store player data. If false, the nickname will be used");
         setConfigValue("use_uuid", false);
+
         populateModules();
         populateDatabase();
     }
 
-    private static void populateModules() {
+    private void populateModules() {
         yamlFile.setBlankLine("modules");
 
         yamlFile.setComment("modules.rcon-manager", "Rcon manager. Allows sending RCON commands to other servers");
@@ -69,11 +57,9 @@ public class ConfigYAML {
 
         yamlFile.setComment("modules.chat-manager", "Chat manager. Allows you to manage chat");
         setConfigValue("modules.chat-manager", true);
-
-
     }
 
-    private static void populateDatabase() {
+    private void populateDatabase() {
         yamlFile.setBlankLine("database");
         yamlFile.setComment("database.type", "only \"mysql\"");
         setConfigValue("database.enable", false);
@@ -85,16 +71,5 @@ public class ConfigYAML {
         setConfigValue("database.port", 3306);
         setConfigValue("database.use_ssl", false);
         setConfigValue("database.table_prefix", "vcmi_");
-    }
-
-    private static void setConfigValue(String path, Object defaultValue) {
-        if (!yamlFile.contains(path)) {
-            yamlFile.set(path, defaultValue);
-        }
-    }
-
-    public static YamlConfiguration getReloadedFile() {
-        reload();
-        return new YamlConfiguration(yamlFile);
     }
 }

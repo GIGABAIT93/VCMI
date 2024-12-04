@@ -13,10 +13,10 @@ import java.util.Set;
 public class ChatCommands implements SimpleCommand {
 
     private static boolean chatEnabled = Config.getModules("chat-manager");
-    private static YamlConfiguration chatConfig = ChatYAML.getConfig();
+    private static YamlConfiguration chatConfig = ChatYAML.getInstance().getConfig();
 
     public static void reload() {
-        chatConfig = ChatYAML.getReloadedFile();
+        chatConfig = ChatYAML.getInstance().getReloadedFile();
         unregister();
         register();
     }
