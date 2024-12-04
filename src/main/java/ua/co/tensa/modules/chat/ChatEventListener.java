@@ -40,7 +40,7 @@ public class ChatEventListener {
                 event.setResult(PlayerChatEvent.ChatResult.denied());
                 String messageFormat = chatConfig.getString(key + ".format");
                 String messageFormatReplaced = messageFormat
-                        .replace("{server}", player.getCurrentServer().get().getServerInfo().getName())
+                        .replace("{server}", player.getCurrentServer().isPresent() ? player.getCurrentServer().get().getServerInfo().getName() : "")
                         .replace("{player}", player.getUsername())
                         .replace("{message}", message.replace(chatConfig.getString(key + ".alias"), ""));
                 if (chatConfig.getBoolean(key + ".see_all")) {
