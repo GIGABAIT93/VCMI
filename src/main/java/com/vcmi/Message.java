@@ -53,14 +53,20 @@ public class Message {
     }
 
     public static void logHeader() {
-        String header = "<green>----------------------------------";
-        info(header);
-        info("<green>    +==================+");
-        info("<green>    |       VCMI       |");
-        info("<green>    +==================+");
-        info(header);
-        info("<green>    <dark_aqua>Current version: <green>" + VCMI.class.getAnnotation(Plugin.class).version());
-        info("<green>    <dark_aqua>Author: <green>GIGABAIT");
-        info(header);
+        String headerLine = "<blue>========================================================</blue>";
+        String version = "<yellow>    Current version: <green>" + VCMI.class.getAnnotation(Plugin.class).version();
+        String author = "<yellow>    Author: <green>GIGABAIT";
+
+        info(headerLine);
+
+        info("<green>  _____ _____ _   _ ____    _    ");
+        info("<green> |_   _| ____| \\ | / ___|  / \\   ");
+        info("<green>   | | |  _| |  \\| \\___ \\ / _ \\  ");
+        info("<green>   | | | |___| |\\  |___) / ___ \\ ");
+        info("<green>   |_| |_____|_| \\_|____/_/   \\_\\");
+
+        info(version);
+        info(author);
+        info(headerLine);
     }
 }
