@@ -1,5 +1,5 @@
 <?php
-// VCMI example script by GIGABAIT
+// TENSA example script by GIGABAIT
 $argv_line = "";
 
 foreach ($argv as $key => $value) {

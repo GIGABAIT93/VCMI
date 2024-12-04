@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com</groupId>
-    <artifactId>VCMI</artifactId>
+    <artifactId>TENSA</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>VCMI</name>
+    <name>TENSA</name>
 
     <properties>
         <java.version>11</java.version>

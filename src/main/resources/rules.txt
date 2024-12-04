@@ -10,4 +10,4 @@
 
 <yellow>You can create many such files and their names will be registered as commands to open the file in the chat</yellow>
 
-<gold>To allow players to use the command grant the right: vcmi.text.{filename}</gold>
+<gold>To allow players to use the command grant the right: tensa.text.{filename}</gold>

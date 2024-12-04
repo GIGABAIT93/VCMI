@@ -1,11 +1,11 @@
 
-# VCMI Plugin
+# TENSA Plugin
 
-VCMI Velocity Plugin - This one offers a variety of modules for detailed server management and monitoring. Each module can be turned on or off as needed. The plugin is designed to be as flexible as possible, allowing you to customize your server's functionality to your specific needs.
+TENSA Velocity Plugin - This one offers a variety of modules for detailed server management and monitoring. Each module can be turned on or off as needed. The plugin is designed to be as flexible as possible, allowing you to customize your server's functionality to your specific needs.
 ## Commands
-- `/vcmi`: Help command to display all available commands.
-- `/vcmireload`: Reloads the plugin configuration file.
-- `/vcmimodules`: Displays a list of all available modules.
+- `/tensa`: Help command to display all available commands.
+- `/tensareload`: Reloads the plugin configuration file.
+- `/tensamodules`: Displays a list of all available modules.
 - `/vpl -v`: Display plugin list.
 - `/psend <player/all> <server>`: Sends the specified player to the specified server.
 
@@ -22,8 +22,8 @@ Enables execution of RCON commands on remote servers, utilizing a configuration 
 ```yaml
 # Rcon servers
 # To allow the use of a separate server for a player, use permission:
-# vcmi.rcon.serve_name
-# Examples: vcmi.rcon.lobby, vcmi.rcon.vanilla
+# tensa.rcon.serve_name
+# Examples: tensa.rcon.lobby, tensa.rcon.vanilla
 
 servers:
   lobby:
@@ -117,7 +117,7 @@ Reads and outputs the contents of text files located in the "text" folder to pla
 
 <yellow>You can create many such files and their names will be registered as commands to open the file in the chat</yellow>
 
-<gold>To allow players to use the command grant the right: vcmi.text.{filename}</gold>
+<gold>To allow players to use the command grant the right: tensa.text.{filename}</gold>
 ```
 
 ### HttpRequest:
@@ -215,7 +215,7 @@ global:
   alias: '!'
   command: g
   # If empty, everyone can use this chat and see the messages
-  permission: vcmi.chat.global
+  permission: tensa.chat.global
   see_all: true
   format: '&8[&6G&8] &a{player} &6=> &f{message}'
 # Staff chat
@@ -223,7 +223,7 @@ staff:
   enabled: true
   alias: '@'
   command: s
-  permission: vcmi.chat.staff
+  permission: tensa.chat.staff
   see_all: false
   format: '&8&l[&4&lS&8&l] &b&l{server} &a&l{player} &6&l=> &f&l{message}'
 # Alert chat
@@ -231,7 +231,7 @@ alert:
   enabled: true
   alias: ''
   command: alert
-  permission: vcmi.chat.alert
+  permission: tensa.chat.alert
   see_all: true
   format: '&8[&4ALERT&8] &f{message}'
 ```

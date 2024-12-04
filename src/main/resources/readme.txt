@@ -1,4 +1,4 @@
-[center]<gold>VCMI Plugin</gold>
+[center]<gold>TENSA Plugin</gold>
 [center]<gray>A Velocity Plugin for Comprehensive Server Management</gray>
 
 <gold>Modules:</gold>

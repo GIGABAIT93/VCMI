@@ -1,5 +1,5 @@
 #!/bin/bash
-# VCMI example script by GIGABAIT
+# TENSA example script by GIGABAIT
 
 # Command: bash run shell <command>
 str=""
