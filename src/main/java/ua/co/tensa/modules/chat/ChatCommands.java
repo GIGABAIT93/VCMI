@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class ChatCommands implements SimpleCommand {
 
-    private static boolean chatEnabled = Config.getModules("chat-manager");
+    private static final boolean chatEnabled = Config.getModules("chat-manager");
     private static YamlConfiguration chatConfig = ChatYAML.getInstance().getConfig();
 
     public static void reload() {
@@ -46,7 +46,7 @@ public class ChatCommands implements SimpleCommand {
         String playerName;
         if (invocation.source() instanceof Player) {
             Player player = (Player) invocation.source();
-            server = player.getCurrentServer().get().getServerInfo().getName();
+            server = player.getCurrentServer().isPresent() ? player.getCurrentServer().get().getServerInfo().getName() : "";
             playerName = player.getUsername();
         } else {
             server = "";
