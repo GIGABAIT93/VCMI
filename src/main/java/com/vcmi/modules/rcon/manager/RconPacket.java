@@ -1,17 +1,20 @@
 package com.vcmi.modules.rcon.manager;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.SocketException;
-import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class RconPacket {
+	public static final int SERVERDATA_RESPONSE_VALUE = 0;
 	public static final int SERVERDATA_EXECCOMMAND = 2;
 	public static final int SERVERDATA_AUTH = 3;
+	public static final int SERVERDATA_AUTH_RESPONSE = 2;
+
 	private final int requestId;
 	private final int type;
 	private final byte[] payload;
@@ -38,65 +41,78 @@ public class RconPacket {
 		try {
 			write(rcon.getSocket().getOutputStream(), rcon.getRequestId(), type, payload);
 		} catch (SocketException se) {
-
 			rcon.getSocket().close();
-
 			throw se;
 		}
 
-		return read(rcon.getSocket().getInputStream());
+		return readResponse(rcon);
 	}
 
 	private static void write(OutputStream out, int requestId, int type, byte[] payload) throws IOException {
-		int bodyLength = getBodyLength(payload.length);
-		int packetLength = getPacketLength(bodyLength);
-
-		ByteBuffer buffer = ByteBuffer.allocate(packetLength);
+		ByteBuffer buffer = ByteBuffer.allocate(4 + 4 + 4 + payload.length + 2);
 		buffer.order(ByteOrder.LITTLE_ENDIAN);
 
-		buffer.putInt(bodyLength);
+		buffer.putInt(4 + 4 + payload.length + 2); // Packet size
 		buffer.putInt(requestId);
 		buffer.putInt(type);
 		buffer.put(payload);
-
-		buffer.put((byte) 0);
-		buffer.put((byte) 0);
+		buffer.put((byte) 0); // String null terminator
+		buffer.put((byte) 0); // Empty string null terminator
 
 		out.write(buffer.array());
 		out.flush();
 	}
 
-	private static RconPacket read(InputStream in) throws IOException {
-		byte[] header = new byte[12];
+	private static RconPacket readResponse(Rcon rcon) throws IOException {
+		InputStream in = rcon.getSocket().getInputStream();
+		DataInputStream dis = new DataInputStream(in);
 
-		in.read(header);
+		ByteArrayOutputStream payloadStream = new ByteArrayOutputStream();
+		int responseRequestId = -1;
+		int responseType = -1;
 
-		try {
-			ByteBuffer buffer = ByteBuffer.wrap(header);
-			buffer.order(ByteOrder.LITTLE_ENDIAN);
+		while (true) {
+			int packetSize;
+			try {
+				packetSize = Integer.reverseBytes(dis.readInt());
+			} catch (IOException e) {
+				throw new IOException("Failed to read packet size", e);
+			}
 
-			int length = buffer.getInt();
-			int requestId = buffer.getInt();
-			int type = buffer.getInt();
+			byte[] packetData = new byte[packetSize];
+			dis.readFully(packetData);
 
-			byte[] payload = new byte[length - 4 - 4 - 2];
+			ByteBuffer packetBuffer = ByteBuffer.wrap(packetData);
+			packetBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
-			DataInputStream dis = new DataInputStream(in);
+			int requestId = packetBuffer.getInt();
+			int type = packetBuffer.getInt();
 
-			dis.readFully(payload);
-			dis.read(new byte[2]);
+			byte[] payload = new byte[packetSize - 8 - 2]; // Exclude requestId, type, and two null bytes
+			packetBuffer.get(payload);
 
-			return new RconPacket(requestId, type, payload);
-		} catch (BufferUnderflowException | java.io.EOFException e) {
-			throw new MalformedPacketException("Cannot read the whole packet");
+			// Read the two null bytes
+			packetBuffer.get(); // Null byte
+			packetBuffer.get(); // Null byte
+
+			if (responseRequestId == -1) {
+				responseRequestId = requestId;
+			}
+
+			if (responseType == -1) {
+				responseType = type;
+			}
+
+			payloadStream.write(payload);
+
+			// If packet size is less than the maximum packet size, we have received all data
+			if (packetSize < 4096) {
+				break;
+			}
 		}
-	}
 
-	private static int getPacketLength(int bodyLength) {
-		return 4 + bodyLength;
-	}
+		byte[] fullPayload = payloadStream.toByteArray();
 
-	private static int getBodyLength(int payloadLength) {
-		return 8 + payloadLength + 2;
+		return new RconPacket(responseRequestId, responseType, fullPayload);
 	}
 }
