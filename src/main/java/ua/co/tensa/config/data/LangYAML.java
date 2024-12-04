@@ -83,6 +83,7 @@ public class LangYAML extends BaseYAMLConfig {
                 + "\n&6/vpl &7- &6Show all plugins."
                 + "\n&6/vptime &7- &6Returns your total playing time."
                 + "\n&6/vptime [player] &7- &6Returns the specified player's total playing time."
+                + "\n&6/vptop &7- &6Returns the top 10 players by playing time."
                 + "\n&6/rcon [server/all/reload] [command] &7- &6Sends the specified command to the specified server or all servers."
                 + "\n&6/php [script/reload] [args] &7- &6Executes the specified PHP script."
                 + "\n&6/bash [script/reload] [args] &7- &6Executes the specified Bash script."
