@@ -49,9 +49,9 @@ public class Modules {
     }
 
     private void registerCommands() {
-        Util.registerCommand("tensareload", "vreload", new ReloadCommand());
+        Util.registerCommand("tensareload", "treload", new ReloadCommand());
         Util.registerCommand("tensa", "tensahelp", new HelpCommand());
-        Util.registerCommand("tensamodules", "vmodules", new ModulesCommand());
+        Util.registerCommand("tensamodules", "tmodules", new ModulesCommand());
         Util.registerCommand("vpl", "vplugins", new PluginsCommand());
         Util.registerCommand("psend", "vpsend", new PlayerSendCommand());
     }
