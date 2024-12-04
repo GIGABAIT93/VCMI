@@ -1,6 +1,5 @@
 package ua.co.tensa;
 
-import ua.co.tensa.modules.FakeConsolePlayer;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.command.SimpleCommand;
@@ -140,10 +139,6 @@ public class Util {
 
         return extension;
 
-    }
-
-    public static Player getFakeConsolePlayer() {
-        return new FakeConsolePlayer();
     }
 
     public static class ScriptsData {
